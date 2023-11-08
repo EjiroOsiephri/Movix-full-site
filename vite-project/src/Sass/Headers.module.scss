@@ -7,8 +7,10 @@
 }
 .Header-main {
   display: flex;
+  width: 100%;
+  position: fixed;
   justify-content: space-around;
-  background-color: rgb(47, 20, 71);
+  background-color: rgb(39, 3, 71);
   padding: 0.6em;
   color: white;
 }
