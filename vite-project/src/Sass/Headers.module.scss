@@ -19,9 +19,14 @@
 .Header-main > h1 > span {
   color: rgb(224, 24, 24);
 }
-.Header-main > ul {
+.NavLists {
   display: flex;
   align-items: center;
+}
+.NavLists > ul {
+  display: flex;
+  align-items: center;
+  margin-right: 1em;
 }
 ul li {
   margin-left: 1.2rem;
@@ -38,4 +43,37 @@ li {
   padding: 1rem;
   font-size: 0.8rem;
   cursor: pointer;
+}
+.hamburger-section {
+  display: none;
+}
+@media screen and (max-width: 678px) {
+  .Header-main {
+    align-items: center;
+    justify-content: space-between;
+  }
+  .hamburger-section {
+    display: initial;
+  }
+  .NavLists {
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: -100%;
+    transition: 0.4s;
+    z-index: -3;
+    background-color: rgb(39, 3, 71);
+  }
+  .NavLists > ul {
+    flex-direction: column;
+    gap: 30px;
+  }
+  .login-btn {
+    width: 80%;
+  }
 }

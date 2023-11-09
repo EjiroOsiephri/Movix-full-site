@@ -71,3 +71,14 @@
   margin-bottom: 2rem;
   line-height: 1.7;
 }
+.btn-div {
+  display: flex;
+}
+@media screen and (max-width: 978px) {
+  .textSection {
+    transform: translate(-50%, -50%);
+  }
+  .textSection > h1 {
+    font-size: 35px;
+  }
+}
