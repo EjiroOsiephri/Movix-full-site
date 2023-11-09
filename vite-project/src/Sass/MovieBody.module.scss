@@ -5,7 +5,6 @@
 }
 .mapImgArray {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
   gap: 10px;
 }
@@ -77,6 +76,12 @@
 @media screen and (max-width: 978px) {
   .textSection {
     transform: translate(-50%, -50%);
+  }
+  .mapImgArray {
+    display: flex;
+    width: 100%;
+    overflow: auto;
+    transform: translate(-50%, 200%);
   }
   .textSection > h1 {
     font-size: 35px;

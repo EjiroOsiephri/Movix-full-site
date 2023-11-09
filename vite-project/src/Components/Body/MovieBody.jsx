@@ -1,4 +1,4 @@
-import React, { useDebugValue, useState } from "react";
+import React, { useState } from "react";
 import Classes from "../../Sass/MovieBody.module.scss";
 import img1 from "../../assets/eagle-poster.jpg";
 import img2 from "../../assets/maxresdefault.jpg";
