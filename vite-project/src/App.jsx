@@ -1,3 +1,4 @@
+import FirstMovieBody from "./Components/Body/FirstMovieBody";
 import MovieBody from "./Components/Body/MovieBody";
 import Headers from "./Components/Headers/Headers";
 
@@ -6,6 +7,7 @@ function App() {
     <>
       <Headers />
       <MovieBody />
+      <FirstMovieBody />
     </>
   );
 }
