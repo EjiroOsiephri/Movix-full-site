@@ -1,0 +1,57 @@
+.First-tv-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: 3rem 0 2rem 0;
+}
+.First-tv-section > h1 {
+  color: white;
+  font-size: 20px;
+  letter-spacing: 2px;
+}
+.Arrow-div {
+  display: flex;
+  padding: 0.5em;
+  align-items: center;
+  border-radius: 10px;
+  color: white;
+  background-color: #091833;
+}
+.Arrow-div > h3:first-child {
+  margin-right: 0.8rem;
+}
+.Arrow-div > h3:hover {
+  background: red;
+  border-radius: 5px;
+}
+.mappingTvMovies {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 5rem;
+}
+.mappingTvMovies > div {
+  width: 380px;
+  height: 850px;
+  padding: 1em;
+  border-radius: 10px;
+  background-color: #091833;
+}
+.mappingTvMovies > div > img {
+  width: 350px;
+  height: 500px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+.mappingTvMovies > div > h1 {
+  color: white;
+  margin: 2em 0 1em 0;
+}
+.mappingTvMovies > div > p {
+  color: #5e6470;
+  line-height: 1.7;
+}
+@media screen and (max-width: 678px) {
+  .mappingTvMovies {
+    flex-direction: column;
+  }
+}

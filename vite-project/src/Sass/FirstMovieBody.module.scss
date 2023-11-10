@@ -39,11 +39,17 @@ body {
   align-items: center;
 }
 .movieDevices > p {
+  text-align: center;
   color: #5d636f;
   margin-top: 2em;
   margin-bottom: 4em;
+  margin-left: 2em;
+  margin-right: 2em;
 }
 
+.movieDevices > img {
+  max-width: 100%;
+}
 @media screen and (max-width: 678px) {
   .FirstMovieBodyMain > p,
   h1 {

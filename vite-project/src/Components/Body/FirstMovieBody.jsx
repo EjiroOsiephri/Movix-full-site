@@ -28,10 +28,7 @@ const FirstMovieBody = () => {
     <>
       <main className={Classes["FirstMovieBodyMain"]}>
         <h1>Any Time, Anywhere</h1>
-        <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Provident
-          consequuntur ipsum labore?
-        </p>
+        <p>Enjoy watching movies from anywhere, anytime.</p>
         <section>
           <ul>
             <li
