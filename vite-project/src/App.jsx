@@ -1,4 +1,5 @@
 import FirstMovieBody from "./Components/Body/FirstMovieBody";
+import MostPopular from "./Components/Body/MostPopular";
 import MovieBody from "./Components/Body/MovieBody";
 import TvSection from "./Components/Body/TvSection";
 import Headers from "./Components/Headers/Headers";
@@ -10,6 +11,7 @@ function App() {
       <MovieBody />
       <FirstMovieBody />
       <TvSection />
+      <MostPopular />
     </>
   );
 }

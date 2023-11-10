@@ -1,0 +1,91 @@
+.mostPopular-main > h1 {
+  color: white;
+  text-align: center;
+  margin: 4rem 0 3rem 0;
+}
+.popularMovieGenre h4 {
+  text-align: center;
+  color: white;
+}
+.movieGenre {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+.movieGenre > div {
+  padding: 1rem;
+  border: 1px solid white;
+  margin-right: 0.6rem;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.movieGenre > div:hover {
+  background-color: red;
+}
+.movieGenre > div:active {
+  background-color: red;
+}
+
+.popularMovieGenre {
+  display: flex;
+  gap: 20px;
+  width: 90%;
+  margin: 0 auto;
+}
+.popularMovieGenre > aside:first-child {
+  width: 280px;
+  height: 650px;
+  color: white;
+  padding: 1em;
+  border-radius: 10px;
+  background-color: #091833;
+}
+.popularMovieGenre > aside:first-child > h1 {
+  margin-top: 0.8rem;
+}
+.popularMovieGenre > aside:first-child > p {
+  margin-top: 0.8rem;
+  line-height: 1.7;
+  font-weight: 200;
+}
+.popularMovieGenre > aside:first-child > img {
+  width: 230px;
+  height: 300px;
+}
+.popularMovieGenre > aside:last-child > div {
+  width: 280px;
+  height: 250px;
+  padding: 1em;
+  border-radius: 10px;
+  background-color: #091833;
+}
+.popularMovieGenre > aside:last-child {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.popularMovieGenre > aside:last-child > div > img {
+  width: 230px;
+  height: 200px;
+  object-fit: cover;
+  padding: 1em;
+  border-radius: 10px;
+  background-color: #091833;
+}
+@media screen and (max-width: 990px) {
+  .movieGenre {
+    width: 100%;
+    overflow: auto;
+  }
+  .popularMovieGenre {
+    flex-direction: column;
+    align-items: center;
+  }
+  .popularMovieGenre > aside:last-child {
+    display: flex;
+    width: 100%;
+    flex-wrap: unset;
+    overflow: auto;
+  }
+}
