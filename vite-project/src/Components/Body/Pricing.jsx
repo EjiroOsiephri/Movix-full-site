@@ -1,5 +1,6 @@
 import React from "react";
 import Classes from "../../Sass/Pricing.module.scss";
+import { FaCheck } from "react-icons/fa";
 
 const Pricing = () => {
   return (
@@ -12,7 +13,7 @@ const Pricing = () => {
         </p>
         <section className={Classes["pricingSection"]}>
           <div>Basic</div>
-          <div>Starndard</div>
+          <div>Standard</div>
           <div>Premium</div>
         </section>
         <section className={Classes["pricingDetailsSection"]}>
@@ -34,6 +35,9 @@ const Pricing = () => {
             <p>720p</p>
             <p>1080p</p>
           </aside>
+          <div>
+            <p>Watch on your Computer,Tv tablet $ phone.</p>
+          </div>
         </section>
       </main>
     </>

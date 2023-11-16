@@ -74,6 +74,17 @@
   background-color: #091833;
 }
 @media screen and (max-width: 990px) {
+  .popularMovieGenre > aside:first-child {
+    width: 100%;
+    height: unset;
+    padding: 2rem;
+  }
+  .popularMovieGenre > aside:first-child > img {
+    width: 100%;
+    object-fit: cover;
+
+    margin: 0 auto;
+  }
   .movieGenre {
     width: 100%;
     overflow: auto;
@@ -87,5 +98,10 @@
     width: 100%;
     flex-wrap: unset;
     overflow: auto;
+  }
+}
+@media screen and (max-width: 416px) {
+  .movieGenre {
+    justify-content: unset;
   }
 }

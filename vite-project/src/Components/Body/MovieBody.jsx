@@ -9,7 +9,7 @@ import img7 from "../../assets/m.jpg";
 
 const MovieBody = () => {
   const [imgUrl, setImgUrl] = useState(img4);
-  const [imgName, setImageName] = useState("Stranger Things");
+  const [imgName, setImageName] = useState("Jungle Cruise");
   const [imgDescription, setImgDescription] = useState(
     "A paraplegic Marine dispatched to the moon Pandora on a unique mission "
   );

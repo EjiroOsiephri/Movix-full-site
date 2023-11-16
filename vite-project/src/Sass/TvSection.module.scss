@@ -48,11 +48,12 @@
 }
 .mappingTvMovies > div > h1 {
   color: white;
-  margin: 2em 0 1em 0;
+  margin: 1em 0 1em 0;
 }
 .mappingTvMovies > div > p {
   color: #5e6470;
   line-height: 1.7;
+  -webkit-line-clamp: 6;
 }
 @media screen and (max-width: 678px) {
   .mappingTvMovies {

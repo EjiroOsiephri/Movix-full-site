@@ -20,6 +20,7 @@
   margin: 0 auto;
   display: flex;
   padding: 0.6em;
+  margin: 1rem 0 2rem 0;
   overflow: auto;
 }
 .pricingSection > div {
@@ -56,5 +57,11 @@
   .pricingDetailsSection {
     width: 100%;
     overflow: auto;
+  }
+  .pricingDetailsSection > aside {
+    padding: 1em 0 1em 0;
+  }
+  .pricingDetailsSection > aside > p {
+    padding: 0.6em 0.4em 0.6em 0.4em;
   }
 }

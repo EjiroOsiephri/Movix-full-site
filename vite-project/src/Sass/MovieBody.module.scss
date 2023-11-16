@@ -1,6 +1,6 @@
 .Main-movieBody > img {
   width: 100%;
-  height: 700px;
+  height: 850px;
   object-fit: cover;
 }
 .mapImgArray {
@@ -8,7 +8,6 @@
   justify-content: center;
   gap: 10px;
 }
-
 .textSection {
   position: absolute;
   left: 50%;
@@ -74,15 +73,16 @@
   display: flex;
 }
 @media screen and (max-width: 978px) {
-  .textSection {
-    transform: translate(-50%, -50%);
-  }
   .mapImgArray {
     display: flex;
     width: 100%;
     overflow: auto;
     transform: translate(-50%, 190%);
   }
+  .textSection {
+    transform: translate(-50%, -50%);
+  }
+
   .textSection > h1 {
     font-size: 35px;
   }
