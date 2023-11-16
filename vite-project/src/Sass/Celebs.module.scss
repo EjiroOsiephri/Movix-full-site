@@ -1,0 +1,70 @@
+.celebMain {
+  background-color: #0a1c3a;
+  padding-top: 20px;
+  margin-top: 20px;
+}
+.navigateToCelebSection {
+  display: flex;
+  justify-content: center;
+  color: white;
+  margin: 0.6rem 0 4rem 0;
+  text-transform: capitalize;
+}
+.navigateToCelebSection > p {
+  margin-left: 1.5rem;
+}
+.navigateToCelebSection > p:hover {
+  border-bottom: 2px solid red;
+  cursor: pointer;
+}
+.avatarCelebImageSection {
+  display: flex;
+  gap: 20px;
+  width: 90%;
+  margin: 0 auto;
+  overflow: auto;
+}
+.flexImages {
+  display: flex;
+}
+.imgAside > img {
+  max-width: 150px;
+  border-radius: 10px;
+  height: 100px;
+  object-fit: cover;
+}
+.flexTexts {
+  color: white;
+  margin-left: 1.5rem;
+}
+.flexTexts > h3 {
+  text-transform: uppercase;
+  margin-bottom: 0.7rem;
+  font-weight: 500;
+}
+.flexTexts > h4 {
+  text-transform: uppercase;
+  margin-bottom: 0.7em;
+  font-size: 13px;
+  font-weight: 300;
+}
+.flexTexts > p {
+  line-height: 1.5;
+  font-weight: 200;
+}
+@media screen and (max-width: 678px) {
+  .avatarCelebImageSection {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    text-align: center;
+  }
+  .flexImages {
+    flex-direction: column;
+    width: 80%;
+  }
+  .flexTexts {
+    margin-left: unset;
+  }
+}

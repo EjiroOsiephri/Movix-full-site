@@ -29,6 +29,7 @@
   width: 100%;
   overflow: auto;
   display: flex;
+  gap: 20px;
   justify-content: space-around;
   margin-top: 5rem;
 }
@@ -71,5 +72,6 @@
 @media screen and (min-width: 678px) and (max-width: 1040px) {
   .mappingTvMovies {
     justify-content: unset;
+    gap: 20px;
   }
 }

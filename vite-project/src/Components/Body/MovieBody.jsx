@@ -11,7 +11,7 @@ const MovieBody = () => {
   const [imgUrl, setImgUrl] = useState(img4);
   const [imgName, setImageName] = useState("Stranger Things");
   const [imgDescription, setImgDescription] = useState(
-    "A paraplegic Marine dispatched to the moon Pandora on a unique mission becomes torn between following his orders and protecting the world he feels is his home."
+    "A paraplegic Marine dispatched to the moon Pandora on a unique mission "
   );
 
   const imgArray = [
@@ -37,19 +37,19 @@ const MovieBody = () => {
       name: img5,
       imgName: "Stranger Things",
       imgDescription:
-        "Stranger Things is set in the fictional rural town of Hawkins, Indiana, in the 1980s. The nearby Hawkins National Laboratory ostensibly performs scientific research for the United States Department of Energy but secretly experiments with the paranormal and supernatural, sometimes with human test subjects.",
+        "Stranger Things is set in the fictional rural town of Hawkins, Indiana",
     },
     {
       name: img6,
       imgName: "Ben 10",
       imgDescription:
-        "A hugely popular TV series about a 10 year old boy with the power to transform into 10 different alien species. Ben Tennyson discovers the Omnitrix, a mysterious alien device with the power to transform the wearer into ten different alien species",
+        "A hugely popular TV series about a 10 year old boy with the power to transform",
     },
     {
       name: img7,
       imgName: "Game of Thrones",
       imgDescription:
-        "A Game of Thrones takes place on the fictional continent of Westeros, which experiences years-long seasons of varying intensity. The majority of Westeros comprises the Seven Kingdoms, and a monumental wall of ice separates the northernmost portion of the continent from the frigid wasteland beyond.",
+        "A Game of Thrones takes place on the fictional continent of Westeros",
     },
   ];
 

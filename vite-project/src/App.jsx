@@ -1,3 +1,4 @@
+import Celebs from "./Components/Body/Celebs";
 import FirstMovieBody from "./Components/Body/FirstMovieBody";
 import MostPopular from "./Components/Body/MostPopular";
 import MovieBody from "./Components/Body/MovieBody";
@@ -12,6 +13,7 @@ function App() {
       <FirstMovieBody />
       <TvSection />
       <MostPopular />
+      <Celebs />
     </>
   );
 }
