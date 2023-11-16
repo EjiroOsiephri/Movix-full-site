@@ -1,0 +1,60 @@
+.Pricing-main {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.Pricing-main > h1 {
+  margin-bottom: 0.7em;
+  color: aliceblue;
+}
+.Pricing-main > p {
+  color: #5d636f;
+  max-width: 80%;
+  margin-bottom: 0.8rem;
+  text-align: center;
+}
+.pricingSection {
+  position: relative;
+  margin: 0 auto;
+  display: flex;
+  padding: 0.6em;
+  overflow: auto;
+}
+.pricingSection > div {
+  padding: 1rem;
+  border: 1px solid white;
+  margin-right: 0.6rem;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.pricingSection > div:hover {
+  background: red;
+}
+.pricingDetailsSection > aside {
+  display: flex;
+  margin-top: 20px;
+  border-bottom: 2px solid #5d636f;
+  justify-content: space-between;
+}
+
+.pricingDetailsSection > aside > p {
+  padding: 0.6rem;
+  color: #5d636f;
+  white-space: nowrap;
+}
+.pricingDetailsSection > aside:first-child > p {
+  margin-left: unset;
+}
+.pricingDetailsSection {
+  width: 70%;
+  overflow: auto;
+}
+@media screen and (max-width: 678px) {
+  .pricingDetailsSection {
+    width: 100%;
+    overflow: auto;
+  }
+}

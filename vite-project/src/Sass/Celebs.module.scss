@@ -2,6 +2,7 @@
   background-color: #0a1c3a;
   padding-top: 20px;
   margin-top: 20px;
+  padding-bottom: 20px;
 }
 .navigateToCelebSection {
   display: flex;
@@ -63,8 +64,18 @@
   .flexImages {
     flex-direction: column;
     width: 80%;
+    padding: 15px;
   }
   .flexTexts {
     margin-left: unset;
+  }
+}
+@media screen and (min-width: 679px) and (max-width: 978px) {
+  .flexImages {
+    flex-direction: column;
+  }
+  .flexTexts {
+    margin-left: unset;
+    margin-top: 0.6em;
   }
 }
