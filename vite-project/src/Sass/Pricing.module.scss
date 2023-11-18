@@ -53,6 +53,22 @@
   width: 70%;
   overflow: auto;
 }
+.pricingDetailsSection > div > p:first-child {
+  max-width: 200px;
+}
+.pricingDetailsSection > div {
+  padding: 0.6em 0.4em 0.6em 0.4em;
+  color: #5d636f;
+}
+.pricingDetailsSection > div {
+  display: flex;
+  justify-content: space-between;
+}
+.pricingDetailsSection > div > h6 {
+  font-size: 20px;
+  color: green;
+  margin-right: 70px;
+}
 @media screen and (max-width: 678px) {
   .pricingDetailsSection {
     width: 100%;

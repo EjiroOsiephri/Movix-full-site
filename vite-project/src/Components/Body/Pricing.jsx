@@ -37,6 +37,9 @@ const Pricing = () => {
           </aside>
           <div>
             <p>Watch on your Computer,Tv tablet $ phone.</p>
+            <h6>{<FaCheck />}</h6>
+            <h6>{<FaCheck />}</h6>
+            <h6>{<FaCheck />}</h6>
           </div>
         </section>
       </main>
