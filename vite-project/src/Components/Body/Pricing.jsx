@@ -5,7 +5,7 @@ import { FaCheck } from "react-icons/fa";
 const Pricing = () => {
   return (
     <>
-      <main className={Classes["Pricing-main"]}>
+      <main id="pricing" className={Classes["Pricing-main"]}>
         <h1>Select your plan</h1>
         <p>
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloribus

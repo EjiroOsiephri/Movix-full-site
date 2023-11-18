@@ -28,7 +28,7 @@ const Celebs = () => {
 
   return (
     <>
-      <main className={Classes["celebMain"]}>
+      <main id="boosting" className={Classes["celebMain"]}>
         <section className={Classes["navigateToCelebSection"]}>
           <p>Celebs</p>
           <p>Events</p>

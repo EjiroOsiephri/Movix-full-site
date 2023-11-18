@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Classes from "../../Sass/Headers.module.scss";
 import { FaTimes, FaBars } from "react-icons/fa";
+import { Link } from "react-scroll";
 
 const Headers = () => {
   const [click, setClick] = useState(false);
@@ -8,6 +9,10 @@ const Headers = () => {
   function showHamburger() {
     setClick(!click);
   }
+
+  const closeMenu = () => {
+    setClick(false);
+  };
 
   return (
     <>
@@ -21,15 +26,53 @@ const Headers = () => {
               ? {
                   left: 0,
                 }
-              : {}
+              : {
+                  left: "-100%",
+                }
           }
           className={Classes["NavLists"]}
         >
           <ul>
-            <li>About</li>
-            <li>Boosting</li>
-            <li>Pricing</li>
-            <li>Contact us</li>
+            <Link
+              spy={true}
+              smooth={true}
+              offset={50}
+              duration={500}
+              to="about"
+              onClick={closeMenu}
+            >
+              About
+            </Link>
+            <Link
+              spy={true}
+              smooth={true}
+              offset={50}
+              duration={500}
+              to="boosting"
+              onClick={closeMenu}
+            >
+              Boosting
+            </Link>
+            <Link
+              spy={true}
+              smooth={true}
+              offset={50}
+              duration={500}
+              to="pricing"
+              onClick={closeMenu}
+            >
+              Pricing
+            </Link>
+            <Link
+              spy={true}
+              smooth={true}
+              offset={50}
+              duration={500}
+              to="contact"
+              onClick={closeMenu}
+            >
+              Contact us
+            </Link>
           </ul>
           <button className={Classes["login-btn"]}>Log in</button>
         </nav>

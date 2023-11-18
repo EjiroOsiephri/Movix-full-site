@@ -23,7 +23,7 @@ const MostPopular = () => {
   ];
   return (
     <>
-      <main className={Classes["mostPopular-main"]}>
+      <main id="about" className={Classes["mostPopular-main"]}>
         <h1>Most Popular Movies</h1>
         <section className={Classes["movieGenre"]}>
           <div>All</div>

@@ -7,12 +7,12 @@
 }
 .first-footer-section {
   width: 70%;
+  margin: 0 auto;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   gap: 20px;
 }
 .first-footer-section > aside {
-  //   border: 1px solid #5e6470;
   padding: 1em;
 }
 .first-footer-section > aside > h1 {
