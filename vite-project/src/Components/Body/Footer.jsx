@@ -11,8 +11,8 @@ import {
 const Footer = () => {
   return (
     <>
-      <main>
-        <section>
+      <main className={Classes["main-footer"]}>
+        <section className={Classes["first-footer-section"]}>
           <aside>
             <h1>
               Movi<span>X</span>

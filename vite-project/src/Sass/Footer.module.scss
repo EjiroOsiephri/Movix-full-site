@@ -1,0 +1,29 @@
+.main-footer {
+  display: flex;
+  flex-direction: column;
+  background-color: #0a1c3a;
+  margin-top: 2rem;
+  padding: 2rem 1rem 2rem 1rem;
+}
+.first-footer-section {
+  display: flex;
+  justify-content: space-evenly;
+}
+.first-footer-section > aside > h1 {
+  color: white;
+  margin-bottom: 0.5rem;
+}
+.first-footer-section > aside > h1 > span {
+  color: red;
+}
+.first-footer-section > aside > p {
+  color: #5e6470;
+  padding: 0.5rem 0 0.5rem 0;
+}
+.first-footer-section > aside > div {
+  width: 30%;
+  justify-content: space-between;
+  display: flex;
+  margin-top: 2rem;
+  color: #5e6470;
+}
