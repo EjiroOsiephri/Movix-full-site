@@ -1,5 +1,6 @@
 import Celebs from "./Components/Body/Celebs";
 import FirstMovieBody from "./Components/Body/FirstMovieBody";
+import Footer from "./Components/Body/Footer";
 import MostPopular from "./Components/Body/MostPopular";
 import MovieBody from "./Components/Body/MovieBody";
 import Pricing from "./Components/Body/Pricing";
@@ -16,6 +17,7 @@ function App() {
       <MostPopular />
       <Celebs />
       <Pricing />
+      <Footer />
     </>
   );
 }
