@@ -5,23 +5,18 @@
 }
 .mapImgArray {
   display: flex;
-  justify-content: center;
   gap: 10px;
+  justify-content: center;
+  width: 100%;
+  margin-top: 2em;
+  text-align: center;
 }
 .textSection {
-  position: absolute;
-  left: 50%;
+  width: 50%;
   text-align: center;
-  top: 50%;
-  transform: translate(-80%, -50%);
+  padding-top: 2rem;
 }
-.mapImgArray {
-  position: absolute;
-  left: 50%;
-  text-align: center;
-  top: 50%;
-  transform: translate(-80%, 220%);
-}
+
 .movieBodyScrollImg > img {
   width: 100px;
   height: 100px;
@@ -71,18 +66,19 @@
 }
 .btn-div {
   display: flex;
+  margin-top: 2.5rem;
+  justify-content: center;
 }
-@media screen and (max-width: 978px) {
+@media screen and (max-width: 678px) {
   .mapImgArray {
     display: flex;
     width: 100%;
     overflow: auto;
-    transform: translate(-50%, 190%);
+    justify-content: unset;
   }
   .textSection {
-    transform: translate(-50%, -50%);
+    width: 100%;
   }
-
   .textSection > h1 {
     font-size: 35px;
   }

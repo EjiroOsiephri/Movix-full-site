@@ -64,18 +64,35 @@ const MovieBody = () => {
 
   return (
     <>
-      <main className={Classes["Main-movieBody"]}>
-        <img src={imgUrl} alt="" />
-        <section className={Classes["textSection"]}>
+      <main
+        style={{
+          backgroundImage: `url(${imgUrl})`,
+          height: "700px",
+          WebkitBackgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+        }}
+        className={Classes["Main-movieBody"]}
+      >
+        <section
+          className={Classes["textSection"]}
+          style={{
+            backgroundColor: "black",
+            opacity: 0.7,
+            padding: "2rem",
+            position: "relative",
+            top: "50px",
+            margin: "0 auto",
+            borderRadius: "10px",
+          }}
+        >
           <h3>2021 | 18+ | Series</h3>
           <h1>{imgName}</h1>
           <h4>{imgDescription}</h4>
-          <div className={Classes["btn-div"]}>
-            <button>Watch</button>
-            <button>Trailer</button>
-          </div>
         </section>
-
+        <div className={Classes["btn-div"]}>
+          <button>Watch</button>
+          <button>Trailer</button>
+        </div>
         <section className={Classes["mapImgArray"]}>
           {imgArray.map((item, index) => {
             return (
