@@ -17,7 +17,11 @@ const Footer = () => {
             <h1>
               Movi<span>X</span>
             </h1>
-            <p>
+            <p
+              style={{
+                maxWidth: "250px",
+              }}
+            >
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem,
               labore.
             </p>

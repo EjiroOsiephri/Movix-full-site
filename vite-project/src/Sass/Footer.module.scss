@@ -6,8 +6,14 @@
   padding: 2rem 1rem 2rem 1rem;
 }
 .first-footer-section {
+  width: 70%;
   display: flex;
   justify-content: space-evenly;
+  gap: 20px;
+}
+.first-footer-section > aside {
+  //   border: 1px solid #5e6470;
+  padding: 1em;
 }
 .first-footer-section > aside > h1 {
   color: white;
@@ -21,9 +27,14 @@
   padding: 0.5rem 0 0.5rem 0;
 }
 .first-footer-section > aside > div {
-  width: 30%;
-  justify-content: space-between;
   display: flex;
+  justify-content: space-between;
   margin-top: 2rem;
   color: #5e6470;
+}
+@media screen and (max-width: 795px) {
+  .first-footer-section {
+    flex-wrap: wrap;
+    justify-content: unset;
+  }
 }
