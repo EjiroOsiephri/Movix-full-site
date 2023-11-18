@@ -30,7 +30,7 @@
 .movieBodyScrollImg > img:hover {
   transform: translateY(-10px) scale(1.2);
   object-fit: cover;
-  gap: 20px;
+  margin: 0.6em;
 }
 .textSection > h1 {
   color: white;
