@@ -36,7 +36,6 @@ const Headers = () => {
             <Link
               spy={true}
               smooth={true}
-              offset={50}
               duration={500}
               to="about"
               onClick={closeMenu}
@@ -46,7 +45,6 @@ const Headers = () => {
             <Link
               spy={true}
               smooth={true}
-              offset={50}
               duration={500}
               to="boosting"
               onClick={closeMenu}
@@ -56,7 +54,6 @@ const Headers = () => {
             <Link
               spy={true}
               smooth={true}
-              offset={50}
               duration={500}
               to="pricing"
               onClick={closeMenu}
@@ -66,7 +63,6 @@ const Headers = () => {
             <Link
               spy={true}
               smooth={true}
-              offset={50}
               duration={500}
               to="contact"
               onClick={closeMenu}
