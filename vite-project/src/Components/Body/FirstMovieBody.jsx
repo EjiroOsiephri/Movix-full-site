@@ -9,19 +9,13 @@ const FirstMovieBody = () => {
   const [imgUrl, setImgUrl] = useState(imgTv);
   const [activeDevice, setActiveDevice] = useState("tv");
 
-  function clickTv() {
-    setImgUrl(imgTv);
-    setActiveDevice("tv");
-  }
-
-  function clickLaptop() {
-    setImgUrl(imgLaptop);
-    setActiveDevice("laptop");
-  }
-
-  function clickTablet() {
-    setImgUrl(imgPhone);
-    setActiveDevice("tablet");
+  function selectDevice(device) {
+    let img;
+    if (device === "tv") img = imgTv;
+    if (device === "tablet") img = imgPhone;
+    else img = imgLaptop;
+    setImgUrl(img);
+    setActiveDevice(device);
   }
 
   return (
@@ -32,7 +26,7 @@ const FirstMovieBody = () => {
         <section>
           <ul>
             <li
-              onClick={clickTv}
+              onClick={() => selectDevice("tv")}
               style={
                 activeDevice === "tv"
                   ? {
@@ -45,7 +39,7 @@ const FirstMovieBody = () => {
               TV
             </li>
             <li
-              onClick={clickLaptop}
+              onClick={() => selectDevice("laptop")}
               style={
                 activeDevice === "laptop"
                   ? {
@@ -58,7 +52,7 @@ const FirstMovieBody = () => {
               Laptop & Desktop
             </li>
             <li
-              onClick={clickTablet}
+              onClick={() => selectDevice("tablet")}
               style={
                 activeDevice === "tablet"
                   ? {

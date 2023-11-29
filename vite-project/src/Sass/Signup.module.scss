@@ -5,3 +5,15 @@
   opacity: 0.6;
   background-image: url("../assets/net.jpg") !important;
 }
+
+.signup-section {
+  background-color: rgba(0, 0, 0, 0.75);
+  border-radius: 4px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  min-height: 515px;
+  padding: 20px 0 30px;
+  width: 100%;
+}
