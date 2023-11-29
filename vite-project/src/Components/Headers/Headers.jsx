@@ -78,7 +78,7 @@ const Headers = () => {
             </Link>
           </ul>
           <button onClick={showLoginSound} className={Classes["login-btn"]}>
-            Log in
+            Sign up
           </button>
         </nav>
         <div className={Classes["hamburger-section"]} onClick={showHamburger}>

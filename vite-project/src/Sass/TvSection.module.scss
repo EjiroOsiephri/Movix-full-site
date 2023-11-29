@@ -63,11 +63,12 @@
     align-items: center;
   }
   .mappingTvMovies > div {
-    width: 300px;
-    height: 900px;
+    width: 80%;
+    height: 880px;
   }
   .mappingTvMovies > div > img {
-    width: 280px;
+    width: 100%;
+    object-fit: cover;
   }
 }
 @media screen and (min-width: 678px) and (max-width: 1040px) {
