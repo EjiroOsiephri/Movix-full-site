@@ -2,17 +2,24 @@ import React, { useState } from "react";
 import Classes from "../../Sass/Headers.module.scss";
 import { FaTimes, FaBars } from "react-icons/fa";
 import { Link } from "react-scroll";
+import useSound from "use-sound";
+import clickSound from "../../assets/mis.wav";
 
 const Headers = () => {
   const [click, setClick] = useState(false);
 
+  const [playClickSound] = useSound(clickSound);
+
   function showHamburger() {
     setClick(!click);
   }
-
   const closeMenu = () => {
     setClick(false);
   };
+
+  function showLoginSound() {
+    playClickSound();
+  }
 
   return (
     <>
@@ -70,7 +77,9 @@ const Headers = () => {
               Contact us
             </Link>
           </ul>
-          <button className={Classes["login-btn"]}>Log in</button>
+          <button onClick={showLoginSound} className={Classes["login-btn"]}>
+            Log in
+          </button>
         </nav>
         <div className={Classes["hamburger-section"]} onClick={showHamburger}>
           {click ? (
