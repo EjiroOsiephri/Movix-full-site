@@ -4,8 +4,10 @@ import { FaTimes, FaBars } from "react-icons/fa";
 import { Link } from "react-scroll";
 import useSound from "use-sound";
 import clickSound from "../../assets/mis.wav";
+import { useNavigate } from "react-router-dom";
 
 const Headers = () => {
+  const navigate = useNavigate();
   const [click, setClick] = useState(false);
   const [activeLink, setActiveLink] = useState(null);
 
@@ -21,6 +23,7 @@ const Headers = () => {
 
   function showLoginSound() {
     playClickSound();
+    navigate("/signup");
   }
 
   const handleLinkClick = (link) => {
