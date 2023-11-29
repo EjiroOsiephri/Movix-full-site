@@ -46,9 +46,20 @@ a {
   font-size: 1rem;
   cursor: pointer;
 }
+
+.login-btn:active {
+  background-color: black;
+  opacity: 0.2;
+  color: white;
+}
+
 .hamburger-section {
   display: none;
 }
+.active-link {
+  border-bottom: 2px solid white;
+}
+
 @media screen and (max-width: 678px) {
   .Header-main {
     align-items: center;

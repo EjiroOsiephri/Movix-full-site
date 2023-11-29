@@ -7,12 +7,14 @@ import clickSound from "../../assets/mis.wav";
 
 const Headers = () => {
   const [click, setClick] = useState(false);
+  const [activeLink, setActiveLink] = useState(null);
 
   const [playClickSound] = useSound(clickSound);
 
   function showHamburger() {
     setClick(!click);
   }
+
   const closeMenu = () => {
     setClick(false);
   };
@@ -20,6 +22,11 @@ const Headers = () => {
   function showLoginSound() {
     playClickSound();
   }
+
+  const handleLinkClick = (link) => {
+    setActiveLink(link);
+    closeMenu();
+  };
 
   return (
     <>
@@ -45,7 +52,8 @@ const Headers = () => {
               smooth={true}
               duration={500}
               to="about"
-              onClick={closeMenu}
+              onClick={() => handleLinkClick("about")}
+              className={activeLink === "about" ? Classes["active-link"] : ""}
             >
               About
             </Link>
@@ -54,7 +62,10 @@ const Headers = () => {
               smooth={true}
               duration={500}
               to="boosting"
-              onClick={closeMenu}
+              onClick={() => handleLinkClick("boosting")}
+              className={
+                activeLink === "boosting" ? Classes["active-link"] : ""
+              }
             >
               Boosting
             </Link>
@@ -63,7 +74,8 @@ const Headers = () => {
               smooth={true}
               duration={500}
               to="pricing"
-              onClick={closeMenu}
+              onClick={() => handleLinkClick("pricing")}
+              className={activeLink === "pricing" ? Classes["active-link"] : ""}
             >
               Pricing
             </Link>
@@ -72,7 +84,8 @@ const Headers = () => {
               smooth={true}
               duration={500}
               to="contact"
-              onClick={closeMenu}
+              onClick={() => handleLinkClick("contact")}
+              className={activeLink === "contact" ? Classes["active-link"] : ""}
             >
               Contact us
             </Link>
