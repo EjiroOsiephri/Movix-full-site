@@ -23,7 +23,7 @@ const Headers = () => {
 
   function showLoginSound() {
     playClickSound();
-    navigate("/signup");
+    navigate("/signin");
   }
 
   const handleLinkClick = (link) => {
@@ -94,7 +94,7 @@ const Headers = () => {
             </Link>
           </ul>
           <button onClick={showLoginSound} className={Classes["login-btn"]}>
-            Sign up
+            Sign in
           </button>
         </nav>
         <div className={Classes["hamburger-section"]} onClick={showHamburger}>
