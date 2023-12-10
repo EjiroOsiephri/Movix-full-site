@@ -1,19 +1,36 @@
 .signin-main {
   width: 100%;
   height: 100vh;
-  background-size: contain;
-  opacity: 0.6;
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: 0.9;
   background-image: url("../assets/net.jpg") !important;
 }
 
 .signin-section {
   width: 50%;
+  background-color: rgba(0, 0, 0, 0.75);
   border-radius: 4px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  margin: 0;
+  margin: 0 auto;
   min-height: 515px;
   padding: 20px 0 30px;
-  width: 100%;
+  position: relative;
+  top: 2rem;
+  border-radius: 15px;
+  z-index: 10;
+}
+.signin-section > h1 {
+  color: white;
+  color: #fff;
+  font-size: 32px;
+  font-weight: 500;
+  margin-bottom: 28px;
+}
+@media screen and (max-width: 678px) {
+  .signin-section {
+    width: 95%;
+  }
 }

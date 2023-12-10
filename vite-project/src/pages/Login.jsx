@@ -16,9 +16,18 @@ const Login = () => {
             </div>
             <button>Sign in</button>
           </form>
-          <div className={Classes["checkbox"]}>
-            <input type="checkbox" name="Remember me" id="" />
-          </div>
+          <section className={Classes["enquiry-section"]}>
+            <aside>
+              <div className={Classes["checkbox"]}>
+                <input type="checkbox" />
+              </div>
+              <p>Remember me</p>
+            </aside>
+            <p>need help?</p>
+          </section>
+          <h2>
+            New to Movix? <p>Sign up now</p>{" "}
+          </h2>
         </section>
       </main>
     </>
