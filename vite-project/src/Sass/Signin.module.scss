@@ -1,5 +1,4 @@
 .signin-main {
-  // width: 100%;
   padding: 60px 68px 40px;
   min-height: 660px;
   background-size: cover;
@@ -77,6 +76,30 @@
   letter-spacing: 1.1px;
   margin: 24px 0 12px;
   color: #fff;
+}
+.enquiry-section {
+  display: flex;
+  justify-content: space-between;
+  color: #b3b3b3;
+  margin-top: 2em;
+}
+.enquiry-section > aside:first-child {
+  display: flex;
+  color: #b3b3b3;
+}
+.signin-div > h2 {
+  color: #b3b3b3;
+  color: #737373;
+  font-size: 16px;
+  font-weight: 400;
+  margin-top: 16px;
+  display: flex;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+.signin-div > h2 > p {
+  color: white;
+  cursor: pointer;
 }
 @media screen and (max-width: 778px) {
   .signin-section {

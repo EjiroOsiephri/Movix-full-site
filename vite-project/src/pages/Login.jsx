@@ -29,10 +29,10 @@ const Login = () => {
                 </div>
                 <p>Remember me</p>
               </aside>
-              <p>need help?</p>
+              <p>Need help?</p>
             </section>
             <h2>
-              New to Movix? <p>Sign up now</p>{" "}
+              New to Movix? <p>Sign up now</p>
             </h2>
           </div>
         </section>
