@@ -1,7 +1,13 @@
 import React from "react";
 import Classes from "../Sass/Signin.module.scss";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const navigate = useNavigate();
+
+  const NavigateToSignUp = () => {
+    navigate("/signup");
+  };
   return (
     <>
       <main className={Classes["signin-main"]}>
@@ -32,7 +38,7 @@ const Login = () => {
               <p>Need help?</p>
             </section>
             <h2>
-              New to Movix? <p>Sign up now</p>
+              New to Movix? <p onClick={NavigateToSignUp}>Sign up now</p>
             </h2>
           </div>
         </section>
