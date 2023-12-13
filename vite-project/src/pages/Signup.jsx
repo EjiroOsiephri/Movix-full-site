@@ -1,7 +1,7 @@
 import React from "react";
 import Classes from "../Sass/Signup.module.scss";
 import { Link, useNavigate } from "react-router-dom";
-import { FaCheck } from "react-icons/fa";
+import { FaCheck, FaLaptop, FaPhone, FaTablet, FaTv } from "react-icons/fa";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -30,10 +30,10 @@ const Signup = () => {
     },
     {
       id: "Devices you can switch to watch",
-      name1: "N 1200",
-      name2: "Best",
-      age: 25,
-      name3: "4K + HDR",
+      name1: <FaPhone />,
+      name2: <FaTablet />,
+      age: <FaTv />,
+      name3: <FaLaptop />,
     },
   ];
 
