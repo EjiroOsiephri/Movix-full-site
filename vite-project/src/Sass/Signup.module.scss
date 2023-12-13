@@ -1,0 +1,31 @@
+body {
+  background-color: white !important;
+}
+.signup-header {
+  display: flex;
+  flex-direction: column;
+}
+.signup-div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+.Line-div {
+  border-bottom: 1px solid gray;
+  margin-left: 1em;
+  margin-right: 1em;
+}
+.signup-div > h1 {
+  font-size: 40px;
+  color: rgba(0, 0, 0, 0.75);
+}
+.signup-div > h1 > span {
+  color: red;
+}
+.signup-div > h3 > a {
+  text-decoration: none;
+  cursor: pointer;
+  color: black;
+}
