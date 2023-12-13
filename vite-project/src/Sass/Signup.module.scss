@@ -33,3 +33,20 @@
 .signup-div > h3 > a:hover {
   border-bottom: 1px solid black;
 }
+.step-count-section {
+  padding: 2em 5em 2em 5em;
+}
+.step-count-section > p,
+h1 {
+  margin-bottom: 1rem;
+}
+.step-count-section > h3 {
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+}
+.step-count-section > h3 > span {
+  align-self: center;
+  margin-left: 0.5rem;
+  font-weight: 300;
+}
