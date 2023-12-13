@@ -7,9 +7,34 @@ const Signup = () => {
   const navigate = useNavigate();
 
   const tableData = [
-    { id: 1, name: "John", age: 25 },
-    { id: 2, name: "Jane", age: 30 },
-    { id: 3, name: "Doe", age: 22 },
+    {
+      id: "Monthly Price",
+      name1: "N 1200",
+      name2: "Good",
+      age: 25,
+      name3: "480p",
+    },
+    {
+      id: "Video Quality",
+      name1: "N 1200",
+      name2: "Good ",
+      age: 25,
+      name3: "720p",
+    },
+    {
+      id: "Resolution",
+      name1: "N 1200",
+      name2: "Better",
+      age: 25,
+      name3: "1080p",
+    },
+    {
+      id: "Devices you can switch to watch",
+      name1: "N 1200",
+      name2: "Best",
+      age: 25,
+      name3: "4K + HDR",
+    },
   ];
 
   const navigateToSignInPage = () => {
@@ -80,11 +105,10 @@ const Signup = () => {
             <span>Change or cancel your plan anytime</span>
           </h3>
         </section>
-        <section>
+        <section className={Classes["Movix-table-section"]}>
           <table>
             <thead>
-              <tr>
-                <th></th>
+              <tr className={Classes["create-table-list"]}>
                 <th>Mobile</th>
                 <th>Basic</th>
                 <th>Standard</th>
@@ -95,7 +119,9 @@ const Signup = () => {
               {tableData.map((row) => (
                 <tr key={row.id}>
                   <td>{row.id}</td>
-                  <td>{row.name}</td>
+                  <td>{row.name1}</td>
+                  <td>{row.name2}</td>
+                  <td>{row.name3}</td>
                   <td>{row.age}</td>
                 </tr>
               ))}

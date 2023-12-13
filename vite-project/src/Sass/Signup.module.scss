@@ -50,3 +50,30 @@ h1 {
   margin-left: 0.5rem;
   font-weight: 300;
 }
+.Movix-table-section {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.create-table-list > th {
+  background: #e50914;
+  border-radius: 2px;
+  color: #fff;
+  font-size: 17px;
+  font-weight: 500;
+  margin: 0 auto;
+  opacity: 0.6;
+  padding: 30px;
+  text-align: center;
+  cursor: pointer;
+}
+@media screen and (max-width: 606px) {
+  .create-table-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .step-count-section {
+    padding: 1.2rem;
+  }
+}
