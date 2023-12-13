@@ -1,5 +1,6 @@
-body {
-  background-color: white !important;
+.signup-main {
+  background-color: white;
+  height: 100vh;
 }
 .signup-header {
   display: flex;
@@ -20,6 +21,7 @@ body {
 .signup-div > h1 {
   font-size: 40px;
   color: rgba(0, 0, 0, 0.75);
+  cursor: pointer;
 }
 .signup-div > h1 > span {
   color: red;
