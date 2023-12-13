@@ -9,24 +9,24 @@ const Signup = () => {
   const tableData = [
     {
       id: "Monthly Price",
-      name1: "N 1200",
-      name2: "Good",
-      age: 25,
-      name3: "480p",
+      name1: "NGN 1200",
+      name2: "NGN 1750",
+      age: "NGN 3600",
+      name3: "NGN 4450",
     },
     {
       id: "Video Quality",
-      name1: "N 1200",
-      name2: "Good ",
-      age: 25,
-      name3: "720p",
+      name1: "Good",
+      name2: "Good",
+      age: "Better",
+      name3: "Best",
     },
     {
       id: "Resolution",
-      name1: "N 1200",
-      name2: "Better",
-      age: 25,
-      name3: "1080p",
+      name1: "480p",
+      name2: "720p",
+      age: "1080p",
+      name3: "4k + HDR",
     },
     {
       id: "Devices you can switch to watch",
@@ -121,8 +121,8 @@ const Signup = () => {
                   <td>{row.id}</td>
                   <td>{row.name1}</td>
                   <td>{row.name2}</td>
-                  <td>{row.name3}</td>
                   <td>{row.age}</td>
+                  <td>{row.name3}</td>
                 </tr>
               ))}
             </tbody>
