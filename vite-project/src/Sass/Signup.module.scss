@@ -1,6 +1,6 @@
 .signup-main {
   background-color: white;
-  height: 100vh;
+  min-height: 100vh;
 }
 .signup-header {
   display: flex;
@@ -55,17 +55,52 @@ h1 {
   margin: 0 auto;
 }
 
+.Movix-table-section {
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  th,
+  td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+
+  .id-cell {
+    width: 200px; // Adjust the width as needed
+  }
+}
+
 .create-table-list > th {
   background: #e50914;
   border-radius: 2px;
   color: #fff;
   font-size: 17px;
   font-weight: 500;
-  margin: 0 auto;
   opacity: 0.6;
   padding: 30px;
   text-align: center;
   cursor: pointer;
+  margin-bottom: 1rem;
+}
+
+.signup-button {
+  margin: 0 auto;
+  max-width: 95%;
+  text-align: center;
+  margin-top: 4rem;
+}
+.signup-button > button {
+  width: 50%;
+  height: 50px;
+  font-weight: 600;
+  font-size: 20px;
+  background-color: #e50914;
+  border-radius: 5px;
+  border: none;
+  color: #fff;
 }
 @media screen and (max-width: 606px) {
   .create-table-list {

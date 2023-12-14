@@ -106,9 +106,10 @@ const Signup = () => {
           </h3>
         </section>
         <section className={Classes["Movix-table-section"]}>
-          <table>
+          <table className={Classes["movix-table"]}>
             <thead>
               <tr className={Classes["create-table-list"]}>
+                <th></th>
                 <th>Mobile</th>
                 <th>Basic</th>
                 <th>Standard</th>
@@ -118,7 +119,7 @@ const Signup = () => {
             <tbody>
               {tableData.map((row) => (
                 <tr key={row.id}>
-                  <td>{row.id}</td>
+                  <td className={Classes["id-cell"]}>{row.id}</td>
                   <td>{row.name1}</td>
                   <td>{row.name2}</td>
                   <td>{row.age}</td>
@@ -128,6 +129,9 @@ const Signup = () => {
             </tbody>
           </table>
         </section>
+        <div className={Classes["signup-button"]}>
+          <button>Next</button>
+        </div>
       </main>
     </>
   );
