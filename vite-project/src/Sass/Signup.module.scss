@@ -103,16 +103,13 @@ h1 {
   color: #ddd;
   cursor: pointer;
 }
-@media screen and (max-width: 606px) {
+
+@media screen and (max-width: 676px) {
   .Movix-table-section {
     width: 100%;
     overflow-x: auto;
   }
-  .create-table-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-  }
+
   .step-count-section {
     padding: 1.2rem;
   }

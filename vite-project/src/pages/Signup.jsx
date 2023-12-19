@@ -109,9 +109,7 @@ const Signup = () => {
           </h3>
         </section>
         <section className={Classes["Movix-table-section"]}>
-          <table
-            className={`${Classes["movix-table"]} ${Classes["responsive-table"]}`}
-          >
+          <table className={Classes["movix-table"]}>
             <thead className={Classes["movix-tableHead"]}>
               <tr className={Classes["create-table-list"]}>
                 <th></th>
