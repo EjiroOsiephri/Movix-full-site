@@ -34,7 +34,7 @@
   border-bottom: 1px solid black;
 }
 .step-count-section {
-  padding: 2em 5em 2em 5em;
+  padding: 2em 5em 2em 8em;
 }
 .step-count-section > p,
 h1 {
@@ -69,7 +69,7 @@ h1 {
   }
 
   .id-cell {
-    width: 200px; // Adjust the width as needed
+    width: 200px;
   }
 }
 
@@ -109,8 +109,14 @@ h1 {
     width: 100%;
     overflow-x: auto;
   }
-
+  .signup-div > h1 {
+    font-size: 35px;
+  }
   .step-count-section {
     padding: 1.2rem;
+  }
+  .step-count-section > p,
+  h1 {
+    margin-bottom: initial;
   }
 }
