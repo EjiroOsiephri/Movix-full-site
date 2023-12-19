@@ -98,11 +98,16 @@ h1 {
   font-weight: 600;
   font-size: 20px;
   background-color: #e50914;
-  border-radius: 5px;
+  border-radius: 10px;
   border: none;
-  color: #fff;
+  color: #ddd;
+  cursor: pointer;
 }
 @media screen and (max-width: 606px) {
+  .Movix-table-section {
+    width: 100%;
+    overflow-x: auto;
+  }
   .create-table-list {
     display: flex;
     flex-wrap: wrap;

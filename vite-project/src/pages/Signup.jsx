@@ -40,6 +40,9 @@ const Signup = () => {
   const navigateToSignInPage = () => {
     navigate("/");
   };
+  const navigateToSignUpPageStep2 = () => {
+    navigate("/step2");
+  };
   return (
     <>
       <main className={Classes["signup-main"]}>
@@ -106,8 +109,10 @@ const Signup = () => {
           </h3>
         </section>
         <section className={Classes["Movix-table-section"]}>
-          <table className={Classes["movix-table"]}>
-            <thead>
+          <table
+            className={`${Classes["movix-table"]} ${Classes["responsive-table"]}`}
+          >
+            <thead className={Classes["movix-tableHead"]}>
               <tr className={Classes["create-table-list"]}>
                 <th></th>
                 <th>Mobile</th>
@@ -130,7 +135,7 @@ const Signup = () => {
           </table>
         </section>
         <div className={Classes["signup-button"]}>
-          <button>Next</button>
+          <button onClick={navigateToSignUpPageStep2}>Next</button>
         </div>
       </main>
     </>

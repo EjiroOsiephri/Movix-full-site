@@ -8,7 +8,7 @@ const SignUpStep2 = () => {
       <main className={Classes["signup-main"]}>
         <header className={Classes["signup-header"]}>
           <div className={Classes["signup-div"]}>
-            <h1 onClick={navigateToSignInPage}>
+            <h1>
               MOVI<span>X.</span>
             </h1>
             <h3>
