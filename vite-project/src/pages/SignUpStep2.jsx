@@ -1,9 +1,14 @@
 import React from "react";
 import Classes from "../Sass/Signup.module.scss";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import images from "../assets/images.png";
 
 const SignUpStep2 = () => {
+  const navigate = useNavigate();
+
+  const navigateToSignUpPageStep2 = () => {
+    navigate("/step3");
+  };
   return (
     <>
       <main className={Classes["signup-main"]}>
@@ -26,7 +31,7 @@ const SignUpStep2 = () => {
             Netflix is personalized for you. Create a password to watch on any
             device at any time.
           </h4>
-          <button>Next</button>
+          <button onClick={navigateToSignUpPageStep2}>Next</button>
         </aside>
       </main>
     </>
