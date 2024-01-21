@@ -12,7 +12,14 @@ const Login = () => {
     <>
       <main className={Classes["signin-main"]}>
         <div className={Classes["logo"]}>
-          <h1>
+          <h1
+            style={{
+              cursor: "pointer",
+            }}
+            onClick={() => {
+              navigate("/");
+            }}
+          >
             Movi<span>x.</span>
           </h1>
         </div>
