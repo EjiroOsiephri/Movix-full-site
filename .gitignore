@@ -1,2 +1,2 @@
-./node_modules
-./servers/cert.pem
+/node_modules
+/servers/cert.pem
