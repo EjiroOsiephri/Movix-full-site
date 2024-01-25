@@ -23,12 +23,24 @@ const SignUpStep3 = () => {
           <h4>
             Just a few more steps and you're done! We hate paperwork, too.
           </h4>
-          <form className={Classes["Signin-form"]}>
+          <form className={Classes["Signup-form"]}>
             <div className={Classes["emailSignUpField"]}>
-              <input type="text" placeholder="Enter your mail" />
+              <input
+                style={{
+                  color: "black",
+                }}
+                type="text"
+                placeholder="Enter your mail"
+              />
             </div>
             <div className={Classes["password-div"]}>
-              <input type="text" placeholder="Password" />
+              <input
+                style={{
+                  color: "black",
+                }}
+                type="text"
+                placeholder="Password"
+              />
             </div>
             <button>Sign in</button>
           </form>

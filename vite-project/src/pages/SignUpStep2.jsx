@@ -28,7 +28,7 @@ const SignUpStep2 = () => {
           <p> STEP 2 OF 3</p>
           <h1>Finish setting up your account</h1>
           <h4>
-            Netflix is personalized for you. Create a password to watch on any
+            MOVIX is personalized for you. Create a password to watch on any
             device at any time.
           </h4>
           <button onClick={navigateToSignUpPageStep2}>Next</button>
