@@ -42,7 +42,7 @@ const SignUpStep3 = () => {
                 placeholder="Password"
               />
             </div>
-            <button>Sign in</button>
+            <button>Sign up</button>
           </form>
         </section>
       </main>

@@ -5,6 +5,23 @@ import { useNavigate } from "react-router-dom";
 const Login = () => {
   const navigate = useNavigate();
 
+  const signInWithGoogleCallbackFn = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch("https://localhost:8000/auth/google", {
+        method: "GET",
+        credentials: "include",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      });
+      console.log(response);
+    } catch (error) {
+      console.error("Error signing in with Google:", error);
+    }
+  };
+
   const NavigateToSignUp = () => {
     navigate("/signup");
   };
@@ -33,6 +50,15 @@ const Login = () => {
               <div className={Classes["password-div"]}>
                 <input type="text" placeholder="Password" />
               </div>
+              <button
+                onClick={signInWithGoogleCallbackFn}
+                style={{
+                  marginBottom: 0,
+                  backgroundColor: "initial",
+                }}
+              >
+                Sign in with google
+              </button>
               <button>Sign in</button>
             </form>
             <section className={Classes["enquiry-section"]}>
