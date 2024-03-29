@@ -1,5 +1,3 @@
-const fs = require("fs");
-const https = require("http");
 const helmet = require("helmet");
 const express = require("express");
 const passport = require("passport");
@@ -7,8 +5,6 @@ const session = require("express-session");
 const cors = require("cors");
 const { Strategy } = require("passport-google-oauth20");
 require("dotenv").config();
-
-const PORT = 8000 || process.env.PORT;
 const app = express();
 
 const config = {
@@ -28,14 +24,6 @@ function verifyCallback(acessToken, refreshToken, profile, done) {
 }
 
 app.use(cors({ origin: "http://localhost:5173" }));
-
-const server = https.createServer(
-  {
-    key: fs.readFileSync("key.pem"),
-    cert: fs.readFileSync("cert.pem"),
-  },
-  app
-);
 
 // Middleware setup
 app.use(helmet());
@@ -84,6 +72,4 @@ app.get("/", (req, res) => {
   return res.send("Server started");
 });
 
-server.listen(PORT, () => {
-  console.log(`Server is listening on Port ${PORT}`);
-});
+module.exports = app;
