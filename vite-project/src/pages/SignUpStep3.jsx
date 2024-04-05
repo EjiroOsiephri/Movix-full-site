@@ -12,16 +12,23 @@ const SignUpStep3 = () => {
     e.preventDefault();
 
     try {
-      await RegisterUserModel.insertMany([
-        {
-          email: emailInputRef.current?.value,
-          password: passwordInputRef.current?.value,
-        },
-      ]);
+      const createdUser = {
+        username: emailInputRef.current?.value,
+        password: passwordInputRef.current?.value,
+      };
 
-      console.log("User registered successfully!");
+      const response = await fetch("https://localhost:8000/register", {
+        method: "POST",
+        body: JSON.stringify(createdUser),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const responseData = await response.json();
+
+      console.log(responseData);
     } catch (error) {
-      console.error("Error registering user:", error);
+      console.log(error);
     }
   };
 

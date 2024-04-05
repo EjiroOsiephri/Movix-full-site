@@ -99,7 +99,8 @@ app.post("/register", (req, res, next) => {
   dummy_db.push(createdUser);
 
   res.status(201).json({
-    message: "User created" + username,
+    message: "User created,",
+    user: username,
   });
 });
 
