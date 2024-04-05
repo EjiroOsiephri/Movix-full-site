@@ -1,8 +1,30 @@
 import React from "react";
 import Classes from "../Sass/Signup.module.scss";
 import { Link } from "react-router-dom";
+import RegisterUserModel from "../models/RegisterUserModel";
+import { useRef } from "react";
 
 const SignUpStep3 = () => {
+  const emailInputRef = useRef();
+  const passwordInputRef = useRef();
+
+  const navigateToUserProfilePage = async (e) => {
+    e.preventDefault();
+
+    try {
+      await RegisterUserModel.insertMany([
+        {
+          email: emailInputRef.current?.value,
+          password: passwordInputRef.current?.value,
+        },
+      ]);
+
+      console.log("User registered successfully!");
+    } catch (error) {
+      console.error("Error registering user:", error);
+    }
+  };
+
   return (
     <>
       <main className={Classes["signup-main"]}>
@@ -26,6 +48,7 @@ const SignUpStep3 = () => {
           <form className={Classes["Signup-form"]}>
             <div className={Classes["emailSignUpField"]}>
               <input
+                ref={emailInputRef}
                 style={{
                   color: "black",
                 }}
@@ -35,6 +58,7 @@ const SignUpStep3 = () => {
             </div>
             <div className={Classes["password-div"]}>
               <input
+                ref={passwordInputRef}
                 style={{
                   color: "black",
                 }}
@@ -42,7 +66,7 @@ const SignUpStep3 = () => {
                 placeholder="Password"
               />
             </div>
-            <button>Sign up</button>
+            <button onClick={navigateToUserProfilePage}>Sign up</button>
           </form>
         </section>
       </main>
