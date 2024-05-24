@@ -8,18 +8,21 @@ const SignUpStep3 = () => {
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
 
+  const createdUser = {
+    username: emailInputRef.current?.value,
+    password: passwordInputRef.current?.value,
+  };
+
   const navigateToUserProfilePage = async (e) => {
     e.preventDefault();
 
     try {
-      const createdUser = {
-        username: emailInputRef.current?.value,
-        password: passwordInputRef.current?.value,
-      };
-
-      const response = await fetch("https://localhost:8000/register", {
+      const response = await fetch("http://localhost:8000/api/users/signup", {
         method: "POST",
-        body: JSON.stringify(createdUser),
+        body: JSON.stringify({
+          email: emailInputRef?.current?.value,
+          password: passwordInputRef?.current?.value,
+        }),
         headers: {
           "Content-Type": "application/json",
         },
