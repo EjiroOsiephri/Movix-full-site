@@ -1,24 +1,35 @@
-import React from "react";
+import React, { useRef } from "react";
 import Classes from "../Sass/Signin.module.scss";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const navigate = useNavigate();
 
-  const signInWithGoogleCallbackFn = async (e) => {
+  const emailInputRef = useRef();
+  const passwordInputRef = useRef();
+
+  const signinHandler = async (e) => {
     e.preventDefault();
+    console.log(
+      emailInputRef?.current?.value,
+      passwordInputRef?.current?.value
+    );
     try {
-      const response = await fetch("https://localhost:8000/auth/google", {
-        method: "GET",
-        credentials: "include",
+      const response = await fetch("http://localhost:8000/api/users/login", {
+        method: "POST",
         headers: {
-          Accept: "application/json",
           "Content-Type": "application/json",
         },
+        body: JSON.stringify({
+          email: emailInputRef?.current?.value,
+          password: passwordInputRef?.current?.value,
+        }),
       });
-      console.log(response);
+
+      const responseData = await response.json();
+      console.log(responseData);
     } catch (error) {
-      console.error("Error signing in with Google:", error);
+      console.error("Error signing in:", error);
     }
   };
 
@@ -45,21 +56,23 @@ const Login = () => {
             <h1>Sign in</h1>
             <form className={Classes["Signin-form"]}>
               <div className={Classes["email-phoneNumber"]}>
-                <input type="text" placeholder="Email or phone number" />
+                <input
+                  ref={emailInputRef}
+                  type="text"
+                  placeholder="Email or phone number"
+                />
               </div>
               <div className={Classes["password-div"]}>
-                <input type="text" placeholder="Password" />
+                <input
+                  type="text"
+                  placeholder="Password"
+                  ref={passwordInputRef}
+                />
               </div>
-              <button
-                onClick={signInWithGoogleCallbackFn}
-                style={{
-                  marginBottom: 0,
-                  backgroundColor: "initial",
-                }}
-              >
-                Sign in with google
+
+              <button type="button" onClick={signinHandler}>
+                Sign in
               </button>
-              <button>Sign in</button>
             </form>
             <section className={Classes["enquiry-section"]}>
               <aside>
