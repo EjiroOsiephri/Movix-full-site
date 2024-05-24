@@ -2,30 +2,41 @@ const fs = require("fs");
 const https = require("https");
 const express = require("express");
 const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
 const auth = require("./middlewares/google-auth");
 
 const userRoutes = require("./routes/user-routes");
 
 const PORT = 8000 || process.env.PORT;
 
+// const server = https.createServer(
+//   {
+//     key: fs.readFileSync("key.pem"),
+//     cert: fs.readFileSync("cert.pem"),
+//   },
+//   auth
+// );
+
 const app = express();
 
-const server = https.createServer(
-  {
-    key: fs.readFileSync("key.pem"),
-    cert: fs.readFileSync("cert.pem"),
-  },
-  auth
-);
+app.use(bodyParser.json());
 
 app.use("/api/users", userRoutes);
+
+app.use((error, req, res, next) => {
+  if (res.headerSent) {
+    return next(error);
+  }
+  res.status(error.code || 500);
+  res.json({ message: error.message || "An unknown error occurred" });
+});
 
 mongoose
   .connect(
     "mongodb+srv://ejiroosiephri765:EZSSzhMXwRXdnuxA@cluster0.jpwquns.mongodb.net/movix?retryWrites=true&w=majority&appName=Cluster0"
   )
   .then(() => {
-    server.listen(PORT, () => {
+    app.listen(PORT, () => {
       console.log(`server and mongo listening on ${PORT}`);
     });
   })
