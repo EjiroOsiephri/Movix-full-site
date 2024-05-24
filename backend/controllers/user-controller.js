@@ -1,12 +1,9 @@
 const HttpError = require("../services/http-error");
 const User = require("../services/user");
-
-let existingPassword;
+const bcrypt = require("bcryptjs");
 
 const signupController = async (req, res, next) => {
   const { email, password } = req.body;
-
-  existingPassword = password;
 
   if (!email && !password) {
     const error = new HttpError("Email or password not valid", 404);
@@ -26,9 +23,19 @@ const signupController = async (req, res, next) => {
     return next(err);
   }
 
+  let hashedPassword;
+
+  try {
+    hashedPassword = await bcrypt.hash(password, 12);
+  } catch (error) {
+    console.log(error);
+    const err = new HttpError("Could not create user, try again", 404);
+    return next(err);
+  }
+
   const createdUser = new User({
     email,
-    password,
+    password: hashedPassword,
   });
 
   if (existingUser) {
@@ -69,8 +76,21 @@ const loginController = async (req, res, next) => {
     return next(error);
   }
 
-  if (password !== existingPassword) {
-    const err = new HttpError("Password incorrect, enter a valid password");
+  let isPasswordValid = false;
+
+  try {
+    isPasswordValid = await bcrypt.compare(password, existingUser.password);
+  } catch (error) {
+    console.log(error);
+    const err = new HttpError("Error signing in, pls try again", 422);
+    return next(err);
+  }
+
+  if (!isPasswordValid) {
+    const err = new HttpError(
+      "Password incorrect, enter a valid password",
+      422
+    );
     return next(err);
   }
 
