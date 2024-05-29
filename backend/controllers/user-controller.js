@@ -1,6 +1,7 @@
 const HttpError = require("../services/http-error");
 const User = require("../services/user");
 const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 
 const signupController = async (req, res, next) => {
   const { email, password } = req.body;
@@ -33,10 +34,24 @@ const signupController = async (req, res, next) => {
     return next(err);
   }
 
+  let token;
+
   const createdUser = new User({
     email,
     password: hashedPassword,
   });
+
+  try {
+    token = jwt.sign(
+      { userId: createdUser.id, email: createdUser.email },
+      "super_secret",
+      { expiresIn: "1hr" }
+    );
+  } catch (error) {
+    console.log(error);
+    const err = new HttpError("Error signing up, please try again later", 500);
+    return next(err);
+  }
 
   if (existingUser) {
     return res.status(422).json({
@@ -52,7 +67,9 @@ const signupController = async (req, res, next) => {
     return next(err);
   }
 
-  res.status(201).json({ user: createdUser });
+  res
+    .status(201)
+    .json({ userId: createdUser.id, email: createdUser.email, token: token });
 };
 
 const loginController = async (req, res, next) => {
@@ -91,6 +108,20 @@ const loginController = async (req, res, next) => {
       "Password incorrect, enter a valid password",
       422
     );
+    return next(err);
+  }
+
+  let token;
+
+  try {
+    token = jwt.sign(
+      { userId: existingUser.id, email: existingUser.email },
+      "super_secret",
+      { expiresIn: "1hr" }
+    );
+  } catch (error) {
+    console.log(error);
+    const err = new HttpError("Error trying to login user", 422);
     return next(err);
   }
 
