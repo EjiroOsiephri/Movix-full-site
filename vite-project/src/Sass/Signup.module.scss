@@ -199,6 +199,23 @@ h1 {
   font-weight: 400;
   margin-top: 1rem;
 }
+.emailSignUpField,
+.password-div {
+  position: relative;
+}
+
+.error-text {
+  color: red;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+input {
+  border: 1px solid black;
+  &:focus {
+    outline: none;
+  }
+}
 @media screen and (max-width: 676px) {
   .Movix-table-section {
     width: 100%;

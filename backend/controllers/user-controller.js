@@ -7,6 +7,8 @@ const { validationResult } = require("express-validator");
 const signupController = async (req, res, next) => {
   const errors = validationResult(req);
 
+  console.log(errors);
+
   if (!errors.isEmpty()) {
     return next(
       new HttpError("Invalid inputs passed, please check your data", 422)
