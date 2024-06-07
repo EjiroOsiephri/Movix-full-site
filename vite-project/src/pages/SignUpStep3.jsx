@@ -1,7 +1,6 @@
 import Classes from "../Sass/Signup.module.scss";
 import { Link } from "react-router-dom";
 import { useRef, useState } from "react";
-import Card from "../Components/Card";
 import LoadingSpinner from "../Components/LoadingSpinner";
 
 const SignUpStep3 = () => {
@@ -88,6 +87,7 @@ const SignUpStep3 = () => {
             Just a few more steps and you're done! We hate paperwork, too.
           </h4>
           <form className={Classes["Signup-form"]}>
+            {error && <p className={Classes["error-text"]}>{error}</p>}
             <div className={Classes["emailSignUpField"]}>
               <input
                 ref={emailInputRef}
@@ -119,7 +119,6 @@ const SignUpStep3 = () => {
             <button onClick={navigateToUserProfilePage} disabled={isLoading}>
               {isLoading ? <LoadingSpinner /> : "Signup"}
             </button>
-            {error && <p className={Classes["error-text"]}>{error}</p>}
           </form>
         </section>
       </main>

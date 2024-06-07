@@ -136,7 +136,9 @@ const loginController = async (req, res, next) => {
     return next(err);
   }
 
-  res.status(200).json({ message: "Sign in successful" });
+  res
+    .status(201)
+    .json({ userId: existingUser.id, email: existingUser.email, token: token });
 };
 
 module.exports = { signupController, loginController };
