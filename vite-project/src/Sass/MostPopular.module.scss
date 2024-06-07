@@ -1,7 +1,7 @@
 .mostPopular-main > h1 {
   color: white;
   text-align: center;
-  margin: 4rem 0 3rem 0;
+  margin: 4rem 1rem 3rem 1rem;
 }
 .popularMovieGenre h4 {
   text-align: center;
@@ -32,6 +32,9 @@
   gap: 20px;
   width: 90%;
   margin: 0 auto;
+  margin-left: 9%;
+  margin-bottom: 3rem;
+  margin-top: 3rem;
 }
 .popularMovieGenre > aside:first-child {
   width: 280px;

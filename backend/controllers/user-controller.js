@@ -2,8 +2,17 @@ const HttpError = require("../services/http-error");
 const User = require("../services/user");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const { validationResult } = require("express-validator");
 
 const signupController = async (req, res, next) => {
+  const errors = validationResult(req);
+
+  if (!errors.isEmpty()) {
+    return next(
+      new HttpError("Invalid inputs passed, please check your data", 422)
+    );
+  }
+
   const { email, password } = req.body;
 
   if (!email && !password) {

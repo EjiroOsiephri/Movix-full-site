@@ -15,12 +15,18 @@
   padding: 0.5em;
   align-items: center;
   border-radius: 10px;
+  gap: 10px;
   color: white;
   background-color: #091833;
 }
 .Arrow-div > h3:first-child {
   margin-right: 0.8rem;
+  padding: 0.3em;
 }
+.Arrow-div > h3:last-child {
+  padding: 0.3em;
+}
+
 .Arrow-div > h3:hover {
   background: red;
   border-radius: 5px;
@@ -64,7 +70,7 @@
   }
   .mappingTvMovies > div {
     width: 80%;
-    height: 880px;
+    height: 980px;
   }
   .mappingTvMovies > div > img {
     width: 100%;

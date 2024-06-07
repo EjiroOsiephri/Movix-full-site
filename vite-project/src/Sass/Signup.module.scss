@@ -80,8 +80,7 @@ h1 {
   font-size: 17px;
   font-weight: 500;
   opacity: 0.6;
-  padding: 30px;
-  text-align: center;
+  padding: 30px 10px 30px 10px;
   cursor: pointer;
   margin-bottom: 1rem;
 }
@@ -102,6 +101,7 @@ h1 {
   border: none;
   color: #ddd;
   cursor: pointer;
+  margin-bottom: 2em;
 }
 .step2-asideContainer {
   width: 50%;

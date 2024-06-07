@@ -2,12 +2,13 @@ body {
   background-color: rgba(6, 14, 34, 255) !important;
 }
 .FirstMovieBodyMain > h1 {
-  margin-top: 1em;
+  margin: 1em;
   text-align: center;
   color: #f8fcff;
   margin-bottom: 1em;
 }
 .FirstMovieBodyMain > p {
+  margin: 0.5em;
   color: #5d636f;
   margin-top: 1em;
   text-align: center;
@@ -57,7 +58,12 @@ body {
   h1 {
     line-height: 1.5;
   }
+  .FirstMovieBodyMain > section > ul {
+    width: 100%;
+    overflow: auto;
+  }
   .FirstMovieBodyMain > section > ul > li {
-    margin-right: unset;
+    width: 100%;
+    white-space: nowrap;
   }
 }

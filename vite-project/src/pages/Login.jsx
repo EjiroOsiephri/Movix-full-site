@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import Classes from "../Sass/Signin.module.scss";
 import { useNavigate } from "react-router-dom";
 
@@ -36,6 +36,7 @@ const Login = () => {
   const NavigateToSignUp = () => {
     navigate("/signup");
   };
+
   return (
     <>
       <main className={Classes["signin-main"]}>

@@ -38,6 +38,7 @@
   margin-bottom: 2rem;
 }
 .btn-div > button {
+  cursor: pointer;
   width: 100px;
   height: 50px;
   border: none;
@@ -49,12 +50,25 @@
 }
 .btn-div > button:first-child {
   background: red;
+  transition: background-color 0.5s ease;
   color: white;
 }
 .btn-div > button:last-child {
-  color: red;
-  border: 1px solid red;
+  background-color: transparent;
+  color: white;
+  border: 1px solid white;
+  transition: background-color 0.5s ease-in-out;
 }
+.btn-div > button:first-child:hover {
+  border: 1px solid white;
+  background-color: transparent;
+}
+
+.btn-div > button:last-child:hover {
+  background-color: red;
+  border: unset;
+}
+
 .textSection > h3 {
   color: aliceblue;
   margin-bottom: 2rem;

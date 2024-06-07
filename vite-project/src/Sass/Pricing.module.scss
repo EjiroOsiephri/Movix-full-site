@@ -34,40 +34,213 @@
 .pricingSection > div:hover {
   background: red;
 }
-.pricingDetailsSection > aside {
-  display: flex;
-  margin-top: 20px;
-  border-bottom: 2px solid #5d636f;
-  justify-content: space-between;
+
+.pricingDetailsSection > table {
+  width: 100%;
 }
 
-.pricingDetailsSection > aside > p {
-  padding: 0.6rem;
-  color: #5d636f;
-  white-space: nowrap;
+.signup-main {
+  background-color: white;
+  min-height: 100vh;
 }
-.pricingDetailsSection > aside:first-child > p {
-  margin-left: unset;
+.signup-header {
+  display: flex;
+  flex-direction: column;
 }
-.pricingDetailsSection {
-  width: 70%;
-  overflow: auto;
-}
-.pricingDetailsSection > div > p:first-child {
-  max-width: 200px;
-}
-.pricingDetailsSection > div {
-  padding: 0.6em 0.4em 0.6em 0.4em;
-  color: #5d636f;
-}
-.pricingDetailsSection > div {
+.signup-div {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
 }
-.pricingDetailsSection > div > h6 {
+.Line-div {
+  border-bottom: 0.5px solid gray;
+  margin-left: 1em;
+  margin-right: 1em;
+}
+.signup-div > h1 {
+  font-size: 40px;
+  color: rgba(0, 0, 0, 0.75);
+  cursor: pointer;
+}
+.signup-div > h1 > span {
+  color: red;
+}
+.signup-div > h3 > a {
+  text-decoration: none;
+  cursor: pointer;
+  color: black;
+}
+.signup-div > h3 > a:hover {
+  border-bottom: 1px solid black;
+}
+.step-count-section {
+  padding: 2em 5em 2em 8em;
+}
+.step-count-section > p,
+h1 {
+  margin-bottom: 1rem;
+}
+.step-count-section > h3 {
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+}
+.step-count-section > h3 > span {
+  align-self: center;
+  margin-left: 0.5rem;
+  font-weight: 300;
+}
+.Movix-table-section {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.Movix-table-section {
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  th,
+  td {
+    color: white;
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+  }
+
+  .id-cell {
+    width: 200px;
+  }
+}
+
+.create-table-list > th {
+  background: #e50914;
+  border-radius: 2px;
+  color: white;
+  text-align: center;
+  font-size: 17px;
+  font-weight: 500;
+  opacity: 0.6;
+  padding: 30px 10px 30px 10px;
+  cursor: pointer;
+  margin-bottom: 1rem;
+}
+
+.signup-button {
+  margin: 0 auto;
+  max-width: 95%;
+  text-align: center;
+  margin-top: 4rem;
+}
+.signup-button > button {
+  width: 50%;
+  height: 50px;
+  font-weight: 600;
   font-size: 20px;
-  color: green;
-  margin-right: 70px;
+  background-color: #e50914;
+  border-radius: 10px;
+  border: none;
+  color: #ddd;
+  cursor: pointer;
+  margin-bottom: 2em;
+}
+.step2-asideContainer {
+  width: 50%;
+  text-align: center;
+  margin: 0 auto;
+  padding: 1rem 0 0 1rem;
+  margin-top: 3rem;
+}
+.signupStep3-section {
+  width: 50%;
+  text-transform: uppercase;
+  text-align: left;
+  margin: 0 auto;
+  padding: 1rem 0 0 1rem;
+  margin-top: 3rem;
+}
+
+.signupStep3-section > p {
+  margin-bottom: 1.2rem;
+}
+.step2-asideContainer > p {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+.step2-asideContainer > img {
+  color: #e50914;
+}
+
+.step2-asideContainer .signupStep3-section > h1 {
+  margin-top: 1.2rem;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+.step2-asideContainer > h4 {
+  text-transform: uppercase;
+  font-weight: 500;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+.step2-asideContainer > button {
+  color: white;
+  border: none;
+  width: 100%;
+  height: 50px;
+  background-color: #e50914;
+  border-radius: 5px;
+  font-size: 20px;
+  text-transform: uppercase;
+  cursor: pointer;
+  margin-top: 2rem;
+}
+.Signup-form {
+  margin-top: 2rem;
+}
+
+.emailSignUpField {
+  padding: 1.2rem 0 1.2rem 0;
+}
+.emailSignUpField > input {
+  border: 1px solid black;
+  width: 100%;
+  border-radius: 4px;
+  color: #fff;
+  height: 50px;
+  line-height: 50px;
+  padding: 5px 15px 5px 15px;
+  font-size: 15px;
+  background: transparent;
+}
+.password-div > input {
+  border: 1px solid black;
+  width: 100%;
+  border-radius: 4px;
+  color: #fff;
+  height: 50px;
+  line-height: 50px;
+  padding: 5px 15px 5px 15px;
+  font-size: 15px;
+  background: transparent;
+}
+.Signup-form > button {
+  width: 100%;
+  padding: 16px;
+  background: #e50914;
+  margin-top: 3rem;
+  border-radius: 4px;
+  font-size: 16px;
+  border: none;
+  font-weight: 500;
+  letter-spacing: 1.1px;
+  margin: 24px 0 12px;
+  color: #fff;
+}
+.signupStep3-section > h4 {
+  font-weight: 400;
+  margin-top: 1rem;
 }
 @media screen and (max-width: 678px) {
   .pricingDetailsSection {
@@ -79,5 +252,30 @@
   }
   .pricingDetailsSection > aside > p {
     padding: 0.6em 0.4em 0.6em 0.4em;
+  }
+  .pricingDetailsSection > div > p:first-child {
+    margin-right: 25px;
+  }
+  .Movix-table-section {
+    width: 100%;
+    overflow-x: auto;
+  }
+  .signup-div > h1 {
+    font-size: 35px;
+  }
+  .step-count-section {
+    padding: 1.2rem;
+  }
+  .step-count-section > p,
+  h1 {
+    margin-bottom: initial;
+  }
+  .step2-asideContainer {
+    width: 95%;
+    padding: 0;
+  }
+  .signupStep3-section {
+    width: 95%;
+    padding: 0;
   }
 }
