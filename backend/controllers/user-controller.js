@@ -2,6 +2,7 @@ const HttpError = require("../services/http-error");
 const User = require("../services/user");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const sendEmail = require("../middlewares/email-service");
 const { validationResult } = require("express-validator");
 
 const signupController = async (req, res, next) => {
@@ -78,9 +79,26 @@ const signupController = async (req, res, next) => {
     return next(err);
   }
 
-  res
-    .status(201)
-    .json({ userId: createdUser.id, email: createdUser.email, token: token });
+  try {
+    await sendEmail(
+      email,
+      "Welcome to Our Service!",
+      "Thank you for signing up on MOVIX!",
+      "<strong>We appreciate your dedication and time to support our services, please reach out if any inconveniences are met!</strong>"
+    );
+
+    res.status(201).json({
+      message: "User signed up successfully and email sent!",
+      userId: createdUser.id,
+      email: createdUser.email,
+      token: token,
+    });
+  } catch (error) {
+    console.error("Error signing up or sending email:", error);
+    res
+      .status(500)
+      .json({ message: "Sign up failed. Please try again later." });
+  }
 };
 
 const loginController = async (req, res, next) => {

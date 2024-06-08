@@ -54,11 +54,14 @@ const SignUpStep3 = () => {
       const responseData = await response.json();
 
       if (!response.ok) {
-        throw new Error(responseData.message || "Failed to sign up.");
+        console.log(responseData);
+        throw new Error(responseData.error || responseData.message);
       }
 
       console.log(responseData);
       setIsLoading(false);
+      emailInputRef.current.value = "";
+      passwordInputRef.current.value = "";
     } catch (error) {
       setIsLoading(false);
       setError(error.message);

@@ -5,6 +5,8 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const auth = require("./middlewares/google-auth");
 
+require("dotenv").config();
+
 const userRoutes = require("./routes/user-routes");
 
 const PORT = 8000 || process.env.PORT;
