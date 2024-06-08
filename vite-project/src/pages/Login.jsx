@@ -64,10 +64,14 @@ const Login = () => {
       setIsLoading(false);
       emailInputRef.current.value = "";
       passwordInputRef.current.value = "";
+      navigate("/profile");
     } catch (error) {
       setIsLoading(true);
-      setError(error.message);
       console.error("Error signing in:", error);
+      setError(error.message);
+      emailInputRef.current.value = "";
+      passwordInputRef.current.value = "";
+      setIsLoading(false);
     }
   };
 

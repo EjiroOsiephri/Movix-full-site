@@ -1,5 +1,5 @@
 import Classes from "../Sass/Signup.module.scss";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useRef, useState } from "react";
 import LoadingSpinner from "../Components/LoadingSpinner";
 
@@ -10,6 +10,8 @@ const SignUpStep3 = () => {
   const [passwordError, setPasswordError] = useState("");
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
+
+  const navigate = useNavigate();
 
   const validateEmail = (email) => {
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -62,6 +64,7 @@ const SignUpStep3 = () => {
       setIsLoading(false);
       emailInputRef.current.value = "";
       passwordInputRef.current.value = "";
+      navigate("/profile");
     } catch (error) {
       setIsLoading(false);
       setError(error.message);
@@ -69,12 +72,16 @@ const SignUpStep3 = () => {
     }
   };
 
+  const navigateToHome = () => {
+    navigate("/");
+  };
+
   return (
     <>
       <main className={Classes["signup-main"]}>
         <header className={Classes["signup-header"]}>
           <div className={Classes["signup-div"]}>
-            <h1>
+            <h1 onClick={navigateToHome}>
               MOVI<span>X.</span>
             </h1>
             <h3>

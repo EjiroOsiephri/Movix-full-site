@@ -6,6 +6,8 @@ import SignUpStep2 from "./pages/SignUpStep2";
 import SignUpStep3 from "./pages/SignUpStep3";
 import ProfilePage from "./profile/pages/ProfilePage";
 
+import { AuthContext } from "./context/AuthContext";
+
 function App() {
   return (
     <>

@@ -1,14 +1,20 @@
 import React from "react";
-import { FaBell, FaCaretDown, FaSearch } from "react-icons/fa";
+import { FaBell, FaCaretDown, FaSearch, FaUser } from "react-icons/fa";
+import Classes from "./ProfileHeader.module.scss";
+import { useNavigate } from "react-router-dom";
 
 const ProfileHeader = () => {
+  const navigate = useNavigate();
+  const navigateToHome = () => {
+    navigate("/");
+  };
   return (
     <>
-      <main>
-        <h1>
-          MOVI<span>X</span>
+      <main className={Classes["main-profile"]}>
+        <h1 onClick={navigateToHome}>
+          MOVI<span>X.</span>
         </h1>
-        <div className="list-item">
+        <div className={Classes["list-item"]}>
           <ul>
             <li>Movies</li>
             <li>Tv shows</li>
@@ -16,14 +22,14 @@ const ProfileHeader = () => {
             <li>Animation</li>
           </ul>
         </div>
-        <div className="search-input">
-          <FaSearch />
+        <div className={Classes["search-input"]}>
+          <FaSearch className={Classes["search-icon"]} />
           <input type="text" placeholder="Search" />
         </div>
-        <div className="notification-section">
-          <FaBell />
-          <div className="profile-section">
-            <img src="" alt="Ejiro" />
+        <div className={Classes["notification-section"]}>
+          <FaBell className={Classes["fa-bell"]} />
+          <div className={Classes["profile-section"]}>
+            <FaUser className={Classes["fa-user"]} />
             <p>
               <FaCaretDown />
             </p>

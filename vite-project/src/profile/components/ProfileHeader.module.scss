@@ -1,0 +1,77 @@
+.main-profile {
+  display: flex;
+  justify-content: space-around;
+  color: white;
+  margin-top: 1rem;
+}
+.main-profile > h1 {
+  cursor: pointer;
+}
+h1 > span {
+  color: red;
+}
+.list-item > ul {
+  display: flex;
+}
+ul {
+  list-style-type: none;
+}
+.list-item > ul > li {
+  margin: 0 0.4rem 0 0.4rem;
+  padding: 0.5rem;
+  cursor: pointer;
+  transition: 0.5s ease;
+}
+
+.list-item > ul > li:hover {
+  background-color: white;
+  color: rgb(6, 14, 34);
+  border-radius: 25px;
+}
+.search-input > input {
+  background: transparent;
+  border-radius: 15px;
+  border: 1px solid white;
+  color: white;
+  font-weight: 600;
+}
+
+.search-input {
+  position: relative;
+
+  input {
+    padding-left: 2.5rem;
+    width: 100%;
+    color: white;
+    box-sizing: border-box;
+    border: 1px solid white;
+    border-radius: 4px;
+    height: 40px;
+    letter-spacing: 1.6px;
+  }
+
+  .search-icon {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-110%);
+    color: white;
+    pointer-events: none;
+  }
+}
+.notification-section {
+  display: flex;
+}
+.fa-bell {
+  font-size: 35px;
+  margin-right: 3rem;
+}
+.fa-user {
+  font-size: 35px;
+}
+.profile-section {
+  display: flex;
+}
+.profile-section img {
+  width: 40px;
+}
