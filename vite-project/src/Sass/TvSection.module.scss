@@ -64,13 +64,13 @@
 @media screen and (max-width: 678px) {
   .mappingTvMovies {
     flex-direction: column;
-    gap: 20px;
+    gap: 60px;
     justify-content: center;
     align-items: center;
   }
   .mappingTvMovies > div {
     width: 80%;
-    height: 980px;
+    height: max-content;
   }
   .mappingTvMovies > div > img {
     width: 100%;
@@ -80,6 +80,5 @@
 @media screen and (min-width: 678px) and (max-width: 1040px) {
   .mappingTvMovies {
     justify-content: unset;
-    gap: 20px;
   }
 }
