@@ -1,8 +1,14 @@
 .main-profile {
   display: flex;
+  position: fixed;
+  width: 100%;
+  z-index: 100;
   justify-content: space-around;
   color: white;
-  margin-top: 1rem;
+  padding: 0.6em;
+  padding-top: 1.8em;
+  background-color: #091833;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.9);
 }
 .h1 {
   display: flex;
@@ -41,7 +47,7 @@ ul {
   background: transparent;
   border-radius: 15px;
   border: 1px solid white;
-  color: white;
+  color: white !important;
   font-weight: 600;
 }
 
@@ -54,14 +60,14 @@ ul {
     color: white;
     box-sizing: border-box;
     border: 1px solid white;
-    border-radius: 4px;
+    border-radius: 24px;
     height: 40px;
-    letter-spacing: 1.6px;
+    letter-spacing: 1.2px;
   }
 
   .search-icon {
     position: absolute;
-    left: 10px;
+    left: 12px;
     top: 50%;
     transform: translateY(-100%);
     color: white;
@@ -97,6 +103,9 @@ ul {
 .search-input {
   margin-right: 100px;
 }
+.interactive-section {
+  background: none;
+}
 
 @media screen and (max-width: 1278px) {
   .h1 > h1 {
@@ -107,6 +116,7 @@ ul {
   }
   .main-profile {
     flex-direction: column;
+    padding: 0.6em;
   }
   .interactive-section {
     position: relative;
@@ -114,6 +124,7 @@ ul {
     padding: 0.8rem;
     height: 100vh;
     flex-direction: column;
+    background: #091833;
   }
   .fa-times {
     display: none;

@@ -67,7 +67,6 @@ const ProfileHeader = () => {
                   position: "relative",
                   left: 0,
                   transition: "0.8s ease",
-                  background: "#091833",
                 }
               : {
                   left: "-100%",
@@ -78,7 +77,7 @@ const ProfileHeader = () => {
           <div className={Classes["list-item"]}>
             <ul>
               <li>Movies</li>
-              <li>Tv shows</li>
+              <li>Tv Shows</li>
               <li>Series</li>
               <li>Animation</li>
             </ul>
