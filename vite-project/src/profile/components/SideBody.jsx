@@ -65,8 +65,8 @@ const SideBody = () => {
           </div>
         </section>
         <section className={Classes["toprated-section"]}>
+          <h1>Top Rated</h1>
           {topratedData.map((data, id) => {
-            console.log(data);
             return (
               <section key={id} className={Classes["topratedData-div"]}>
                 <div className={Classes["mappedData-div"]}>

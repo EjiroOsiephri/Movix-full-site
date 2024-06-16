@@ -10,6 +10,9 @@
   padding: 0 1.7rem;
   margin: 1.3em 0;
 }
+.genre-div h1 {
+  font-weight: 400;
+}
 .genre-div h4 {
   font-weight: 200;
   font-size: 15px;
@@ -17,7 +20,7 @@
 .genre-classes {
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: 20px;
 
   button {
     flex: 1 1 calc(40% - 16px);
@@ -35,4 +38,10 @@
 }
 .main-genre {
   margin-left: 2rem;
+}
+.toprated-section {
+  margin-top: 8rem;
+}
+.toprated-section > h1 {
+  color: white;
 }
