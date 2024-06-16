@@ -17,28 +17,32 @@ const SideBody = () => {
 
   const topratedData = [
     {
-      name: "",
-      year: "",
-      genre: "",
-      rating: "",
+      name: "DUNE 2",
+      year: "2024",
+      genre: "Action, thriller",
+      rating: "8.6",
+      image: "https://m.imdb.com/title/tt15239678/?ref_=ls_i_1",
     },
     {
-      name: "",
-      year: "",
-      genre: "",
-      rating: "",
+      name: "J O K E R",
+      year: "2024",
+      genre: "crime, action",
+      rating: "9.0",
+      image: "https://m.imdb.com/title/tt11315808/?ref_=ls_i_2",
     },
     {
-      name: "",
-      year: "",
-      genre: "",
-      rating: "",
+      name: "A Quiet Place",
+      year: "2024",
+      genre: "Story, romance",
+      rating: "8.6",
+      image: "https://m.imdb.com/title/tt13433802/?ref_=ls_i_3",
     },
     {
-      name: "",
-      year: "",
-      genre: "",
-      rating: "",
+      name: "TRANSFORMERS",
+      year: "2024",
+      genre: "action, adventure",
+      rating: "8,3",
+      image: "https://m.imdb.com/title/tt8864596/?ref_=ls_i_23",
     },
   ];
 
