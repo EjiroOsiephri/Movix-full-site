@@ -88,47 +88,62 @@ const MainBody = () => {
     getMoviesDataListTwo();
   }, []);
 
+  console.log(data);
   return (
     <>
       <main>
+        {/* First slide section */}
+
         <section className={Classes["mainbody-section"]}>
           <Carousel showThumbs={false}>
             <div className={Classes["slide"]}>
               <img src={data?.big_image} alt="first" />
               <section className={Classes["textData"]}>
-                <h1>{data?.title}</h1>
-                {data?.genre?.map((genre, id) => (
-                  <h5 key={id}>{genre}</h5>
-                ))}
-                <h4>{data?.year}</h4>
+                <div className={Classes["textData-div"]}>
+                  <h1>{data?.title}</h1>
+                  {data?.genre?.map((genre, id) => (
+                    <h5 key={id}>{genre}</h5>
+                  ))}
+                  <h4>{data?.year}</h4>
+                </div>
                 <div className={Classes["btn-div"]}>
                   <button>Watch</button>
                   <button>+</button>
                 </div>
               </section>
             </div>
+
+            {/* second slide section */}
+
             <div className={Classes["slide"]}>
               <img src={series?.image} alt="second" />
               <section className={Classes["textData"]}>
-                <h1>{series?.title}</h1>
-                {series?.genre?.map((genre, id) => (
-                  <h5 key={id}>{genre}</h5>
-                ))}
-                <h4>{series?.year}</h4>
+                <div className={Classes["textData-div"]}>
+                  <h1>{series?.title}</h1>
+                  {series?.genre?.map((genre, id) => (
+                    <h5 key={id}>{genre}</h5>
+                  ))}
+                  <h4>{series?.year}</h4>
+                </div>
                 <div className={Classes["btn-div"]}>
                   <button>Watch</button>
                   <button>+</button>
                 </div>
               </section>
             </div>
+
+            {/* third slide section */}
+
             <div className={Classes["slide"]}>
               <img src={seriesTwo?.image} alt="third" />
               <section className={Classes["textData"]}>
-                <h1>{seriesTwo?.title}</h1>
-                {seriesTwo?.genre?.map((genre, id) => (
-                  <h5 key={id}>{genre}</h5>
-                ))}
-                <h4>{seriesTwo?.year}</h4>
+                <div className={Classes["textData-div"]}>
+                  <h1>{seriesTwo?.title}</h1>
+                  {seriesTwo?.genre?.map((genre, id) => (
+                    <h5 key={id}>{genre}</h5>
+                  ))}
+                  <h4>{seriesTwo?.year}</h4>
+                </div>
                 <div className={Classes["btn-div"]}>
                   <button>Watch</button>
                   <button>+</button>

@@ -9,6 +9,7 @@
   background-color: #091833;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.9);
 }
+
 .h1 {
   display: flex;
   justify-content: space-between;
@@ -17,19 +18,24 @@
   color: white;
   margin-left: 0.5rem;
 }
+
 .h1 > h1 {
   margin-left: -50%;
 }
+
 h1 > span {
   color: red;
 }
+
 .list-item > ul {
   display: flex;
   margin-left: -30%;
 }
+
 ul {
   list-style-type: none;
 }
+
 .list-item > ul > li {
   margin: 0 0.4rem 0 0.4rem;
   padding: 0.8rem;
@@ -42,6 +48,7 @@ ul {
   color: rgb(6, 14, 34);
   border-radius: 25px;
 }
+
 .search-input > input {
   background: transparent;
   border-radius: 15px;
@@ -68,80 +75,106 @@ ul {
     position: absolute;
     left: 12px;
     top: 50%;
-    transform: translateY(-100%);
+    transform: translateY(-95%);
     color: white;
     pointer-events: none;
   }
 }
+
 .notification-section {
   display: flex;
 }
+
 .fa-bell {
   font-size: 35px;
   margin-right: 3rem;
 }
+
 .fa-user {
   font-size: 35px;
 }
+
 .profile-section {
   display: flex;
 }
+
 .profile-section img {
   width: 40px;
 }
+
 .dropdown-icon {
   cursor: pointer;
 }
+
 .mobile-slideshow {
   display: none;
   font-size: 28px;
 }
+
 .interactive-section {
   display: flex;
 }
+
 .search-input {
   margin-right: 100px;
 }
+
 .interactive-section {
   background: none;
 }
 
 @media screen and (max-width: 1278px) {
+  .main-profile {
+    position: relative;
+    z-index: 100;
+    background-color: rgb(6, 14, 34);
+  }
+
   .h1 > h1 {
     margin-left: initial;
   }
+
   .list-item > ul {
     margin-left: initial;
   }
+
   .main-profile {
     flex-direction: column;
     padding: 0.6em;
   }
+
   .interactive-section {
-    position: relative;
-    left: -100%;
+    width: 100vw;
+    position: absolute; /* Change from relative to absolute */
+    left: -200%;
     padding: 0.8rem;
-    height: 100vh;
+    z-index: 100;
+    height: auto; /* Change from 100vh to auto */
     flex-direction: column;
     background: #091833;
   }
+
   .fa-times {
     display: none;
     transform: translateX(-50%);
     margin-bottom: 10px;
   }
+
   .fa-bars {
     margin-right: 0.7rem;
   }
+
   .list-item > ul {
     margin-top: 1rem;
     flex-direction: column;
   }
+
   .list-item > ul > li {
     width: 200px;
     margin: unset;
     padding: 1.2rem;
   }
+
   .search-input {
     width: 80%;
     margin-bottom: 1rem;
@@ -152,13 +185,16 @@ ul {
       transform: translateY(-50%);
     }
   }
+
   .notification-section {
     margin-left: 0.5rem;
     margin-top: 2rem;
   }
+
   .fa-bell {
     margin-right: 1.8rem;
   }
+
   .mobile-slideshow {
     display: initial;
   }

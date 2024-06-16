@@ -12,7 +12,6 @@ import { useNavigate } from "react-router-dom";
 
 const ProfileHeader = () => {
   const navigate = useNavigate();
-
   const [isShownSlide, setIsShownSlide] = useState(false);
 
   const navigateToHome = () => {
@@ -64,12 +63,12 @@ const ProfileHeader = () => {
           style={
             isShownSlide
               ? {
-                  position: "relative",
+                  position: "absolute",
                   left: 0,
                   transition: "0.8s ease",
                 }
               : {
-                  left: "-100%",
+                  left: "-300%",
                   transition: "0.8s ease",
                 }
           }
