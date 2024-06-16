@@ -2,3 +2,37 @@
   width: 120px;
   border-radius: 15px;
 }
+.genre-div {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+  color: white;
+  padding: 0 1.7rem;
+  margin: 1.3em 0;
+}
+.genre-div h4 {
+  font-weight: 200;
+  font-size: 15px;
+}
+.genre-classes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+
+  button {
+    flex: 1 1 calc(40% - 16px);
+    max-width: calc(40% - 16px);
+    box-sizing: border-box;
+  }
+}
+
+.genre-classes button {
+  padding: 2rem 1rem 2rem 1rem;
+  background-color: transparent;
+  border-radius: 15px;
+  border: 1px solid white;
+  color: white;
+}
+.main-genre {
+  margin-left: 2rem;
+}

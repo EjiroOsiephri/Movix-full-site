@@ -52,7 +52,7 @@ const SideBody = () => {
 
   return (
     <>
-      <main>
+      <main className={Classes["main-genre"]}>
         <section className={Classes["genre-section"]}>
           <div className={Classes["genre-div"]}>
             <h1>Genre</h1>

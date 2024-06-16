@@ -1,8 +1,12 @@
+* {
+  scroll-behavior: smooth;
+}
 .main-container {
   display: flex;
 }
 .mainbody-section {
-  width: 70%;
+  width: 90%;
+  margin-right: 2em;
 }
 
 .slide {
@@ -83,7 +87,7 @@
   font-weight: 200;
 }
 
-@media screen and (max-width: 678px) {
+@media screen and (max-width: 1048px) {
   .slide img {
     height: 700px;
   }
@@ -100,5 +104,8 @@
   }
   .mini-text-data {
     align-self: center;
+  }
+  .side-body {
+    display: none;
   }
 }
