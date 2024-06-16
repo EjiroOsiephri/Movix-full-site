@@ -84,11 +84,21 @@
 }
 
 @media screen and (max-width: 678px) {
+  .slide img {
+    height: 700px;
+  }
   .main-container {
     flex-direction: column;
   }
   .mainbody-section {
     padding: 5px;
     width: 100%;
+  }
+  .textData {
+    flex-direction: column;
+    bottom: 10%;
+  }
+  .mini-text-data {
+    align-self: center;
   }
 }

@@ -29,8 +29,9 @@ const MainBody = () => {
       console.error(error);
       // Handle the error, optionally set dummy data
       setState({
-        big_image: "https://via.placeholder.com/800x400?text=Dummy+Movie",
-        title: "Dummy Movie",
+        big_image:
+          "https://i0.wp.com/itsmoreofacomment.com/wp-content/uploads/2021/09/Dune-Movie-Official-Poster-banner-feature.jpg?w=1440&ssl=1",
+        title: "D U N E",
         genre: ["Action", "Drama"],
         year: "2023",
       });
