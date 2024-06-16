@@ -146,10 +146,11 @@ ul {
   .interactive-section {
     width: 100vw;
     position: absolute; /* Change from relative to absolute */
-    left: -200%;
+    left: -150%;
+    top: 100%;
     padding: 0.8rem;
     z-index: 100;
-    height: auto; /* Change from 100vh to auto */
+    height: 100vh; /* Change from 100vh to auto */
     flex-direction: column;
     background: #091833;
   }

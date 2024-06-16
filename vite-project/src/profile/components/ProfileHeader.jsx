@@ -68,7 +68,7 @@ const ProfileHeader = () => {
                   transition: "0.8s ease",
                 }
               : {
-                  left: "-300%",
+                  left: "-150%",
                   transition: "0.8s ease",
                 }
           }
