@@ -1,7 +1,8 @@
+import React, { useRef, useState, useContext } from "react";
 import Classes from "../Sass/Signup.module.scss";
 import { Link, useNavigate } from "react-router-dom";
-import { useRef, useState } from "react";
 import LoadingSpinner from "../Components/LoadingSpinner";
+import { AuthContext } from "../context/AuthContext";
 
 const SignUpStep3 = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -10,7 +11,7 @@ const SignUpStep3 = () => {
   const [passwordError, setPasswordError] = useState("");
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
-
+  const { login } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const validateEmail = (email) => {
@@ -60,7 +61,7 @@ const SignUpStep3 = () => {
         throw new Error(responseData.error || responseData.message);
       }
 
-      console.log(responseData);
+      login(responseData.token);
       setIsLoading(false);
       emailInputRef.current.value = "";
       passwordInputRef.current.value = "";
@@ -106,7 +107,7 @@ const SignUpStep3 = () => {
                   borderColor: emailError ? "red" : "black",
                 }}
                 type="text"
-                placeholder="Enter your mail"
+                placeholder="Enter your email"
               />
               {emailError && (
                 <p className={Classes["error-text"]}>{emailError}</p>

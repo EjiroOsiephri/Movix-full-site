@@ -1,10 +1,12 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useState, useContext } from "react";
 import Classes from "../Sass/Signin.module.scss";
 import { useNavigate } from "react-router-dom";
 import LoadingSpinner from "../Components/LoadingSpinner";
+import { AuthContext } from "../context/AuthContext";
 
 const Login = () => {
   const navigate = useNavigate();
+  const { login } = useContext(AuthContext);
 
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
@@ -48,10 +50,7 @@ const Login = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          email: emailInputRef?.current?.value,
-          password: passwordInputRef?.current?.value,
-        }),
+        body: JSON.stringify({ email, password }),
       });
 
       const responseData = await response.json();
@@ -60,18 +59,14 @@ const Login = () => {
         throw new Error(responseData.message || "Failed to sign in.");
       }
 
-      console.log(responseData);
+      login(responseData.token);
       setIsLoading(false);
       emailInputRef.current.value = "";
       passwordInputRef.current.value = "";
       navigate("/profile");
     } catch (error) {
-      setIsLoading(true);
-      console.error("Error signing in:", error);
-      setError(error.message);
-      emailInputRef.current.value = "";
-      passwordInputRef.current.value = "";
       setIsLoading(false);
+      setError(error.message);
     }
   };
 
@@ -80,66 +75,56 @@ const Login = () => {
   };
 
   return (
-    <>
-      <main className={Classes["signin-main"]}>
-        <div className={Classes["logo"]}>
-          <h1
-            style={{
-              cursor: "pointer",
-            }}
-            onClick={() => {
-              navigate("/");
-            }}
-          >
-            Movi<span>x.</span>
-          </h1>
+    <main className={Classes["signin-main"]}>
+      <div className={Classes["logo"]}>
+        <h1 onClick={() => navigate("/")}>
+          Movi<span>x.</span>
+        </h1>
+      </div>
+      <section className={Classes["signin-section"]}>
+        <div className={Classes["signin-div"]}>
+          <h1>Sign in</h1>
+          <form className={Classes["Signin-form"]} onSubmit={signinHandler}>
+            {error && <p className={Classes["error-text"]}>{error}</p>}
+            <div className={Classes["email-phoneNumber"]}>
+              <input
+                ref={emailInputRef}
+                type="text"
+                placeholder="Email or phone number"
+              />
+              {emailError && (
+                <p className={Classes["error-text"]}>{emailError}</p>
+              )}
+            </div>
+            <div className={Classes["password-div"]}>
+              <input
+                ref={passwordInputRef}
+                type="password"
+                placeholder="Password"
+              />
+              {passwordError && (
+                <p className={Classes["error-text"]}>{passwordError}</p>
+              )}
+            </div>
+            <button type="submit">
+              {isLoading ? <LoadingSpinner /> : "SIGN IN"}
+            </button>
+          </form>
+          <section className={Classes["enquiry-section"]}>
+            <aside>
+              <div className={Classes["checkbox"]}>
+                <input type="checkbox" />
+              </div>
+              <p>Remember me</p>
+            </aside>
+            <p>Need help?</p>
+          </section>
+          <h2>
+            New to Movix? <p onClick={NavigateToSignUp}>Sign up now</p>
+          </h2>
         </div>
-        <section className={Classes["signin-section"]}>
-          <div className={Classes["signin-div"]}>
-            <h1>Sign in</h1>
-            <form className={Classes["Signin-form"]}>
-              {error && <p className={Classes["error-text"]}>{error}</p>}
-              <div className={Classes["email-phoneNumber"]}>
-                <input
-                  ref={emailInputRef}
-                  type="text"
-                  placeholder="Email or phone number"
-                />
-                {emailError && (
-                  <p className={Classes["error-text"]}>{emailError}</p>
-                )}
-              </div>
-              <div className={Classes["password-div"]}>
-                <input
-                  type="text"
-                  placeholder="Password"
-                  ref={passwordInputRef}
-                />
-                {passwordError && (
-                  <p className={Classes["error-text"]}>{passwordError}</p>
-                )}
-              </div>
-
-              <button type="button" onClick={signinHandler}>
-                {isLoading ? <LoadingSpinner /> : "SIGN IN"}
-              </button>
-            </form>
-            <section className={Classes["enquiry-section"]}>
-              <aside>
-                <div className={Classes["checkbox"]}>
-                  <input type="checkbox" />
-                </div>
-                <p>Remember me</p>
-              </aside>
-              <p>Need help?</p>
-            </section>
-            <h2>
-              New to Movix? <p onClick={NavigateToSignUp}>Sign up now</p>
-            </h2>
-          </div>
-        </section>
-      </main>
-    </>
+      </section>
+    </main>
   );
 };
 
