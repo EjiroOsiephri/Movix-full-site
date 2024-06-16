@@ -1,3 +1,6 @@
+.main-container {
+  display: flex;
+}
 .mainbody-section {
   width: 70%;
 }
@@ -9,13 +12,14 @@
 
 .slide img {
   width: 80%;
+  padding: 2em;
   object-fit: cover;
   height: 500px;
 }
 
 .textData {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   position: absolute;
   bottom: 0;
   left: 0;
@@ -29,6 +33,11 @@
   flex-direction: column;
   font-weight: 300;
   gap: 10px;
+}
+
+.textData-div > h1 {
+  font-size: 25px;
+  text-transform: uppercase;
 }
 
 .btn-div {
@@ -63,4 +72,23 @@
   background-color: transparent;
   color: white;
   border: 1px solid white;
+}
+.mini-text-data {
+  display: flex;
+  margin: 0.7rem;
+  padding: 1rem;
+  gap: 5px;
+}
+.mini-text-data > h5 {
+  font-weight: 200;
+}
+
+@media screen and (max-width: 678px) {
+  .main-container {
+    flex-direction: column;
+  }
+  .mainbody-section {
+    padding: 5px;
+    width: 100%;
+  }
 }

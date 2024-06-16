@@ -5,27 +5,11 @@ import SideBody from "./SideBody";
 import Classes from "./MainBody.module.scss";
 
 const MainBody = () => {
-  const [data, setData] = useState({
-    big_image: "https://via.placeholder.com/800x400?text=First+Slide",
-    title: "Dummy Movie 1",
-    genre: ["Action", "Drama"],
-    year: "2023",
-  });
-  const [series, setSeriesData] = useState({
-    image: "https://via.placeholder.com/800x400?text=Second+Slide",
-    title: "Dummy Series 1",
-    genre: ["Thriller", "Mystery"],
-    year: "2022",
-  });
-  const [seriesTwo, setSeriesTwo] = useState({
-    image: "https://via.placeholder.com/800x400?text=Third+Slide",
-    title: "Dummy Series 2",
-    genre: ["Comedy", "Romance"],
-    year: "2021",
-  });
+  const [data, setData] = useState(null);
+  const [series, setSeriesData] = useState(null);
+  const [seriesTwo, setSeriesTwo] = useState(null);
 
-  async function getMoviesDataList() {
-    const url = "https://imdb-top-100-movies.p.rapidapi.com/top32";
+  async function fetchData(url, setState) {
     const options = {
       method: "GET",
       headers: {
@@ -36,75 +20,52 @@ const MainBody = () => {
 
     try {
       const response = await fetch(url, options);
+      if (!response.ok) {
+        throw new Error("API limit exceeded");
+      }
       const result = await response.json();
-      setData(result);
+      setState(result);
     } catch (error) {
       console.error(error);
-    }
-  }
-
-  const seriesData = async () => {
-    const url = "https://imdb-top-100-movies.p.rapidapi.com/series/top1";
-    const options = {
-      method: "GET",
-      headers: {
-        "x-rapidapi-key": "9f77e3d43emsha1acd4403df8992p16bd27jsn2333d9fdc23c",
-        "x-rapidapi-host": "imdb-top-100-movies.p.rapidapi.com",
-      },
-    };
-
-    try {
-      const response = await fetch(url, options);
-      const result = await response.json();
-      setSeriesData(result);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  async function getMoviesDataListTwo() {
-    const url = "https://imdb-top-100-movies.p.rapidapi.com/series/top3";
-    const options = {
-      method: "GET",
-      headers: {
-        "x-rapidapi-key": "9f77e3d43emsha1acd4403df8992p16bd27jsn2333d9fdc23c",
-        "x-rapidapi-host": "imdb-top-100-movies.p.rapidapi.com",
-      },
-    };
-
-    try {
-      const response = await fetch(url, options);
-      const result = await response.json();
-      console.log(result);
-      setSeriesTwo(result);
-    } catch (error) {
-      console.error(error);
+      // Handle the error, optionally set dummy data
+      setState({
+        big_image: "https://via.placeholder.com/800x400?text=Dummy+Movie",
+        title: "Dummy Movie",
+        genre: ["Action", "Drama"],
+        year: "2023",
+      });
     }
   }
 
   useEffect(() => {
-    getMoviesDataList();
-    seriesData();
-    getMoviesDataListTwo();
+    fetchData("https://imdb-top-100-movies.p.rapidapi.com/top32", setData);
+    fetchData(
+      "https://imdb-top-100-movies.p.rapidapi.com/series/top1",
+      setSeriesData
+    );
+    fetchData(
+      "https://imdb-top-100-movies.p.rapidapi.com/series/top3",
+      setSeriesTwo
+    );
   }, []);
 
-  console.log(data);
   return (
-    <>
-      <main>
-        {/* First slide section */}
-
-        <section className={Classes["mainbody-section"]}>
-          <Carousel showThumbs={false}>
+    <main className={Classes["main-container"]}>
+      <section className={Classes["mainbody-section"]}>
+        <Carousel showThumbs={false}>
+          {/* First slide section */}
+          {data && (
             <div className={Classes["slide"]}>
-              <img src={data?.big_image} alt="first" />
+              <img src={data.big_image} alt="first" />
               <section className={Classes["textData"]}>
                 <div className={Classes["textData-div"]}>
-                  <h1>{data?.title}</h1>
-                  {data?.genre?.map((genre, id) => (
-                    <h5 key={id}>{genre}</h5>
-                  ))}
-                  <h4>{data?.year}</h4>
+                  <h1>{data.title}</h1>
+                  <div className={Classes["mini-text-data"]}>
+                    {data.genre.map((genre, id) => (
+                      <h5 key={id}>{genre}</h5>
+                    ))}
+                    <h5>{data.year}</h5>
+                  </div>
                 </div>
                 <div className={Classes["btn-div"]}>
                   <button>Watch</button>
@@ -112,18 +73,21 @@ const MainBody = () => {
                 </div>
               </section>
             </div>
+          )}
 
-            {/* second slide section */}
-
+          {/* Second slide section */}
+          {series && (
             <div className={Classes["slide"]}>
-              <img src={series?.image} alt="second" />
+              <img src={series.image} alt="second" />
               <section className={Classes["textData"]}>
                 <div className={Classes["textData-div"]}>
-                  <h1>{series?.title}</h1>
-                  {series?.genre?.map((genre, id) => (
-                    <h5 key={id}>{genre}</h5>
-                  ))}
-                  <h4>{series?.year}</h4>
+                  <h1>{series.title}</h1>
+                  <div className={Classes["mini-text-data"]}>
+                    {series.genre.map((genre, id) => (
+                      <h5 key={id}>{genre}</h5>
+                    ))}
+                    <h5>{series.year}</h5>
+                  </div>
                 </div>
                 <div className={Classes["btn-div"]}>
                   <button>Watch</button>
@@ -131,18 +95,21 @@ const MainBody = () => {
                 </div>
               </section>
             </div>
+          )}
 
-            {/* third slide section */}
-
+          {/* Third slide section */}
+          {seriesTwo && (
             <div className={Classes["slide"]}>
-              <img src={seriesTwo?.image} alt="third" />
+              <img src={seriesTwo.image} alt="third" />
               <section className={Classes["textData"]}>
                 <div className={Classes["textData-div"]}>
-                  <h1>{seriesTwo?.title}</h1>
-                  {seriesTwo?.genre?.map((genre, id) => (
-                    <h5 key={id}>{genre}</h5>
-                  ))}
-                  <h4>{seriesTwo?.year}</h4>
+                  <h1>{seriesTwo.title}</h1>
+                  <div className={Classes["mini-text-data"]}>
+                    {seriesTwo.genre.map((genre, id) => (
+                      <h5 key={id}>{genre}</h5>
+                    ))}
+                    <h5>{seriesTwo.year}</h5>
+                  </div>
                 </div>
                 <div className={Classes["btn-div"]}>
                   <button>Watch</button>
@@ -150,13 +117,13 @@ const MainBody = () => {
                 </div>
               </section>
             </div>
-          </Carousel>
-        </section>
-        <section className={Classes["side-body"]}>
-          <SideBody />
-        </section>
-      </main>
-    </>
+          )}
+        </Carousel>
+      </section>
+      <section className={Classes["side-body"]}>
+        <SideBody />
+      </section>
+    </main>
   );
 };
 
