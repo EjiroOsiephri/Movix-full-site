@@ -15,7 +15,7 @@ const MainBody = () => {
     const options = {
       method: "GET",
       headers: {
-        "x-rapidapi-key": "9d6f8bef33mshb71a74827b38bffp15b34fjsn6cf0f7ef1fca",
+        "x-rapidapi-key": "345f62eb29msh87ff7d6b07a7b29p10b5a4jsnb9ef172d0a3f",
         "x-rapidapi-host": "imdb-top-100-movies.p.rapidapi.com",
       },
     };
@@ -134,11 +134,15 @@ const MainBody = () => {
             </div>
           )}
         </Carousel>
+
+        {/* New section */}
+
+        <section className={Classes["recommended-section"]}>
+          <Recommended recommended={recommended} />
+        </section>
       </section>
 
-      <section className={Classes["recommended-section"]}>
-        <Recommended recommended={recommended?.slice(0, 3)} />
-      </section>
+      {/* sidebody section */}
 
       <section className={Classes["side-body"]}>
         <SideBody />
