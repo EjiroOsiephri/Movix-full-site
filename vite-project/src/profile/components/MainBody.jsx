@@ -61,7 +61,10 @@ const MainBody = () => {
     });
 
     // Fetch recommended data
-    fetchData("https://imdb-top-100-movies.p.rapidapi.com/", setRecommended);
+    fetchData(
+      "https://imdb-top-100-movies.p.rapidapi.com/top100",
+      setRecommended
+    );
   }, []);
 
   return (
@@ -137,9 +140,9 @@ const MainBody = () => {
 
         {/* New section */}
 
-        <section className={Classes["recommended-section"]}>
-          <Recommended recommended={recommended} />
-        </section>
+        {/* <section className={Classes["recommended-section"]}>
+          <Recommended recommended={recommended?.slice(0, 100)} />
+        </section> */}
       </section>
 
       {/* sidebody section */}
