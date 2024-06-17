@@ -8,7 +8,7 @@ const Recommended = () => {
     const options = {
       method: "GET",
       headers: {
-        "x-rapidapi-key": "9f77e3d43emsha1acd4403df8992p16bd27jsn2333d9fdc23c",
+        "x-rapidapi-key": "9d6f8bef33mshb71a74827b38bffp15b34fjsn6cf0f7ef1fca",
         "x-rapidapi-host": "imdb-top-100-movies.p.rapidapi.com",
       },
     };
@@ -32,11 +32,15 @@ const Recommended = () => {
       <main className={Classes["fetchData-main"]}>
         <h1>Recommended</h1>
         <section className={Classes["fetchData-section"]}>
-          {data.map((data, id) => {
+          {data?.map((data, id) => {
             return (
               <section className={Classes["fetchData-div"]} key={id}>
-                <img src={data.image} alt="image" />
-                <div className={Classes["fetchData"]}></div>
+                <img src={data?.image} alt="image" />
+                <div className={Classes["fetchData"]}>
+                  <h1>{data?.title}</h1>
+                  <h4>{data?.year}</h4>
+                  <h5>{data?.rating}</h5>
+                </div>
               </section>
             );
           })}

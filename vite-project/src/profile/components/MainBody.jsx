@@ -3,6 +3,7 @@ import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import SideBody from "./SideBody";
 import Classes from "./MainBody.module.scss";
+import Recommended from "./Recommended";
 
 const MainBody = () => {
   const [data, setData] = useState(null);
@@ -13,7 +14,7 @@ const MainBody = () => {
     const options = {
       method: "GET",
       headers: {
-        "x-rapidapi-key": "9f77e3d43emsha1acd4403df8992p16bd27jsn2333d9fdc23c",
+        "x-rapidapi-key": "9d6f8bef33mshb71a74827b38bffp15b34fjsn6cf0f7ef1fca",
         "x-rapidapi-host": "imdb-top-100-movies.p.rapidapi.com",
       },
     };
@@ -25,6 +26,7 @@ const MainBody = () => {
       }
       const result = await response.json();
       setState(result);
+      console.log(result);
     } catch (error) {
       console.error(error);
       // Handle the error, optionally set dummy data
@@ -120,6 +122,7 @@ const MainBody = () => {
             </div>
           )}
         </Carousel>
+        <Recommended />
       </section>
       <section className={Classes["side-body"]}>
         <SideBody />
