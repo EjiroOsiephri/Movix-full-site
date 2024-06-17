@@ -29,9 +29,18 @@ const Recommended = () => {
 
   return (
     <>
-      <main>
+      <main className={Classes["fetchData-main"]}>
         <h1>Recommended</h1>
-        <section className="fetchData-section"></section>
+        <section className={Classes["fetchData-section"]}>
+          {data.map((data, id) => {
+            return (
+              <section className={Classes["fetchData-div"]} key={id}>
+                <img src={data.image} alt="image" />
+                <div className={Classes["fetchData"]}></div>
+              </section>
+            );
+          })}
+        </section>
       </main>
     </>
   );
