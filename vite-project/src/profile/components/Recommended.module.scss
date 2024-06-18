@@ -1,0 +1,38 @@
+.fetchData-main > h1 {
+  color: white;
+  margin-top: 2rem;
+}
+.fetchData-section {
+  margin-top: 2rem;
+  display: flex;
+  gap: 15px;
+  overflow-x: auto;
+}
+
+.fetchData-div img {
+  width: 300px;
+  height: 400px;
+  border-radius: 20px;
+}
+.fetchData {
+  display: flex;
+  justify-content: space-between;
+  padding: 7px;
+
+  background-color: black;
+  border-radius: 30px;
+  opacity: 0.3;
+}
+.fetchData div {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.fetchData div h1 {
+  color: white;
+  font-weight: 500;
+}
+.fetchData div h5 {
+  color: white;
+  font-weight: 200;
+}

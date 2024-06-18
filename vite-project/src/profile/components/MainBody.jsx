@@ -15,7 +15,7 @@ const MainBody = () => {
     const options = {
       method: "GET",
       headers: {
-        "x-rapidapi-key": "345f62eb29msh87ff7d6b07a7b29p10b5a4jsnb9ef172d0a3f",
+        "x-rapidapi-key": "69ef76a2d6msh78df5328b15841ap1138efjsnfee5e8f73f9f",
         "x-rapidapi-host": "imdb-top-100-movies.p.rapidapi.com",
       },
     };
@@ -27,10 +27,8 @@ const MainBody = () => {
       }
       const result = await response.json();
       setState(result);
-      console.log(result);
     } catch (error) {
       console.error(error);
-      // Set fallback data if API limit is exceeded
       setState(fallbackData);
     }
   }
@@ -62,10 +60,12 @@ const MainBody = () => {
 
     // Fetch recommended data
     fetchData(
-      "https://imdb-top-100-movies.p.rapidapi.com/top100",
+      "https://imdb-top-100-movies.p.rapidapi.com/top4",
       setRecommended
     );
   }, []);
+
+  console.log(recommended);
 
   return (
     <main className={Classes["main-container"]}>
@@ -140,9 +140,9 @@ const MainBody = () => {
 
         {/* New section */}
 
-        {/* <section className={Classes["recommended-section"]}>
-          <Recommended recommended={recommended?.slice(0, 100)} />
-        </section> */}
+        <section className={Classes["recommended-section"]}>
+          <Recommended />
+        </section>
       </section>
 
       {/* sidebody section */}

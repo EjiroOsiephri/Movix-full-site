@@ -8,6 +8,7 @@ const auth = require("./middlewares/google-auth");
 require("dotenv").config();
 
 const userRoutes = require("./routes/user-routes");
+const movieRoutes = require("./routes/movie-routes");
 
 const PORT = 8000 || process.env.PORT;
 
@@ -35,6 +36,7 @@ app.use((req, res, next) => {
 });
 
 app.use("/api/users", userRoutes);
+app.use("/api", movieRoutes);
 
 app.use((error, req, res, next) => {
   if (res.headerSent) {
