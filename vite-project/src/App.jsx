@@ -11,22 +11,22 @@ import { useEffect } from "react";
 
 function App() {
   // const fetchData = async () => {
-  //   const url = "https://moviesdatabase.p.rapidapi.com/titles/x/upcoming";
   //   const options = {
   //     method: "GET",
   //     headers: {
-  //       "x-rapidapi-key": "2fe232875cmsh9e769ef8b4c101ep1918d8jsn9a29639afc2f",
-  //       "x-rapidapi-host": "moviesdatabase.p.rapidapi.com",
+  //       accept: "application/json",
+  //       Authorization:
+  //         "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2MGVlZTQwY2YzYWY5MDdmMTI1MzIwODIwMjBjM2U3OCIsInN1YiI6IjY2NzE1MDllMjQwNjQwZDY1NTgzY2NlMCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.BNdaKLfxJSf8bV3jgJe1TinDAFZQK5g43QPfag3m4YE",
   //     },
   //   };
 
-  //   try {
-  //     const response = await fetch(url, options);
-  //     const result = await response.json();
-  //     console.log(result);
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
+  //   fetch(
+  //     "https://api.themoviedb.org/3/account/21334271/favorite/movies",
+  //     options
+  //   )
+  //     .then((response) => response.json())
+  //     .then((response) => console.log(response))
+  //     .catch((err) => console.error(err));
   // };
 
   // useEffect(() => {

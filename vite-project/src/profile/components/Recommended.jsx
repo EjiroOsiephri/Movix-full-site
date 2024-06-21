@@ -10,7 +10,6 @@ const Recommended = () => {
     try {
       const response = await fetch(url);
       const result = await response.json();
-      console.log(result);
       setRecommended(result.films); // Adjust based on the API response structure
     } catch (error) {
       console.error(error);

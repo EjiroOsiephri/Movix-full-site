@@ -4,6 +4,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import SideBody from "./SideBody";
 import Classes from "./MainBody.module.scss";
 import Recommended from "./Recommended";
+import Trending from "./Trending";
 
 const MainBody = () => {
   const [data, setData] = useState(null);
@@ -137,6 +138,10 @@ const MainBody = () => {
             </div>
           )}
         </Carousel>
+
+        <section className={Classes["trending-section"]}>
+          <Trending />
+        </section>
 
         {/* New section */}
 

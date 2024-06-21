@@ -1,5 +1,5 @@
 const GetMovieDataFromApi = async (req, res) => {
-  const url = "https://api-gate2.movieglu.com/filmsNowShowing/?n=10";
+  const url = "https://api-gate2.movieglu.com/filmsNowShowing/?n=25";
   const options = {
     headers: {
       client: "MOVI_214",

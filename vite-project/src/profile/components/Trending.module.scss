@@ -1,0 +1,40 @@
+.main-trending-container {
+  display: flex;
+  padding: 1em;
+  overflow-x: auto;
+  margin-top: 3rem;
+}
+.main-trending-container::-webkit-scrollbar {
+  display: none;
+}
+.main-trending-container div {
+  margin: 0 0.7em;
+}
+
+.main-trending-container div img {
+  border-radius: 20px;
+}
+
+.main-trending-container div section {
+  height: 100px;
+  background-color: black;
+  opacity: 0.4;
+  padding: 0.2rem;
+  margin-top: -50%;
+  border-radius: 15px;
+}
+
+.main-trending-container div h1,
+h4 {
+  color: white;
+  font-weight: 500;
+  padding-left: 1rem;
+  padding-top: 0.4rem;
+}
+
+.trending-texts {
+  text-transform: capitalize;
+  color: white;
+  margin-top: 2em;
+  margin-left: 2em;
+}
