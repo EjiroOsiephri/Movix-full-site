@@ -3,10 +3,13 @@
   padding: 1em;
   overflow-x: auto;
   margin-top: 3rem;
+  position: relative;
 }
+
 .main-trending-container::-webkit-scrollbar {
   display: none;
 }
+
 .main-trending-container div {
   margin: 0 0.7em;
 }
@@ -37,4 +40,61 @@ h4 {
   color: white;
   margin-top: 2em;
   margin-left: 2em;
+}
+
+.container {
+  margin-top: 2rem;
+}
+
+.loading-bar {
+  height: 0.85rem;
+  border-radius: 0.3rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.gradient-1 {
+  background-image: linear-gradient(
+    to right,
+    #eff6ff 30%,
+    #2563eb90 68%,
+    #eff6ff
+  );
+  width: 60%;
+  opacity: 0.2;
+}
+
+.gradient-2 {
+  opacity: 0.3;
+  background-image: linear-gradient(
+    to right,
+    #2563eb90,
+    #eff6ff 60%,
+    #2563eb90
+  );
+  width: 50%;
+}
+
+.gradient-3 {
+  background-image: linear-gradient(
+    to right,
+    #eff6ff 50%,
+    #2563eb90 90%,
+    #eff6ff
+  );
+  opacity: 0.4;
+  width: 55%;
+}
+
+@keyframes loadingAnimation {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(60%);
+  }
+}
+
+.animate-loading {
+  animation: loadingAnimation 1.8s infinite;
 }

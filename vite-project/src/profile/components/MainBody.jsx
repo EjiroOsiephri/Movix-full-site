@@ -139,14 +139,14 @@ const MainBody = () => {
           )}
         </Carousel>
 
-        <section className={Classes["trending-section"]}>
-          <Trending />
-        </section>
-
         {/* New section */}
 
         <section className={Classes["recommended-section"]}>
           <Recommended />
+        </section>
+
+        <section className={Classes["trending-section"]}>
+          <Trending />
         </section>
       </section>
 

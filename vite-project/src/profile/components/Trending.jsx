@@ -50,6 +50,25 @@ const Trending = () => {
           </div>
         ))}
       </main>
+      <div className={Classes["container"]}>
+        <div className={Classes["loading-container"]}>
+          <div
+            className={`${Classes["loading-bar"]} ${Classes["gradient-1"]} ${Classes["animate-loading"]}`}
+          ></div>
+          <div
+            className={`${Classes["loading-bar"]} ${Classes["gradient-2"]} ${Classes["animate-loading"]}`}
+          ></div>
+          <div
+            className={`${Classes["loading-bar"]} ${Classes["gradient-3"]} ${Classes["animate-loading"]}`}
+          ></div>
+          <div
+            className={`${Classes["loading-bar"]} ${Classes["gradient-2"]} ${Classes["animate-loading"]}`}
+          ></div>
+          <div
+            className={`${Classes["loading-bar"]} ${Classes["gradient-1"]} ${Classes["animate-loading"]}`}
+          ></div>
+        </div>
+      </div>
     </>
   );
 };
