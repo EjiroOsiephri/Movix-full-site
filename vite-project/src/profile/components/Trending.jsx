@@ -18,7 +18,7 @@ const Trending = () => {
         headers: {
           accept: "application/json",
           Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2MGVlZTQwY2Y5MDdmMTI1MzIwODIwMjBjM2U3OCIsInN1YiI6IjY2NzE1MDllMjQwNjQwZDY1NTgzY2NlMCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.BNdaKLfxJSf8bV3jgJe1TinDAFZQK5g43QPfag3m4YE",
+            "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2MGVlZTQwY2YzYWY5MDdmMTI1MzIwODIwMjBjM2U3OCIsInN1YiI6IjY2NzE1MDllMjQwNjQwZDY1NTgzY2NlMCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.BNdaKLfxJSf8bV3jgJe1TinDAFZQK5g43QPfag3m4YE",
         },
       };
 
@@ -55,7 +55,7 @@ const Trending = () => {
 
       const response = await fetch(endpoint, options);
       const data = await response.json();
-      const trailer = data.results.find((video) => video.type === "Trailer");
+      const trailer = data?.results?.find((video) => video.type === "Trailer");
       setTrailerKey(trailer ? trailer.key : null);
     } catch (err) {
       console.error(err);

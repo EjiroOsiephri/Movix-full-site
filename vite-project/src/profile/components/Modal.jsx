@@ -1,8 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Classes from "./Modal.module.scss";
+import { AuthContext } from "../../context/AuthContext";
 
 const Modal = ({ show, onClose, data = {}, trailerKey }) => {
   const [isPlaying, setIsPlaying] = useState(false);
+  const context = useContext(AuthContext);
 
   if (!show) {
     return null;
@@ -36,6 +40,39 @@ const Modal = ({ show, onClose, data = {}, trailerKey }) => {
     data.release_dates?.[0]?.release_date ||
     data.release_date ||
     "Release Date Unavailable";
+
+  const addNotificationHandler = () => {
+    const storedId = localStorage.getItem("notificationId");
+    if (parseInt(storedId, 10) !== data.id) {
+      localStorage.setItem("notificationId", data.id);
+
+      const existingNotifications =
+        JSON.parse(localStorage.getItem("notificationData")) || [];
+      const newNotification = {
+        filmName,
+        message: `Added ${filmName} to notifications.`,
+      };
+
+      const updatedNotifications = [...existingNotifications, newNotification];
+
+      localStorage.setItem(
+        "notificationData",
+        JSON.stringify(updatedNotifications)
+      );
+
+      context.addNotification(updatedNotifications);
+
+      toast.success(`Added "${filmName}" to notifications.`);
+
+      localStorage.setItem(
+        "number",
+        JSON.stringify(updatedNotifications?.length)
+      );
+    } else {
+      console.log("Notification already added.");
+      toast.info(`"${filmName}" is already in notifications.`);
+    }
+  };
 
   return (
     <div className={Classes["modal-overlay"]}>
@@ -73,10 +110,11 @@ const Modal = ({ show, onClose, data = {}, trailerKey }) => {
           </div>
           <section>
             <p>Release Date: {releaseDate}</p>
-            <button>+</button>
+            <button onClick={addNotificationHandler}>+</button>
           </section>
         </div>
       </div>
+      <ToastContainer />
       <button className={Classes["close-button"]} onClick={onClose}>
         X
       </button>

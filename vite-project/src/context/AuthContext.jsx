@@ -4,6 +4,7 @@ export const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(localStorage.getItem("token") || null);
+  const [notifications, setNotifications] = useState([]);
 
   const login = (token) => {
     localStorage.setItem("token", token);
@@ -15,8 +16,28 @@ const AuthProvider = ({ children }) => {
     setToken(null);
   };
 
+  const addNotification = (notification) => {
+    setNotifications((prevNotifications) => [
+      ...prevNotifications,
+      notification,
+    ]);
+  };
+
+  const clearNotifications = () => {
+    setNotifications([]);
+  };
+
   return (
-    <AuthContext.Provider value={{ token, login, logout }}>
+    <AuthContext.Provider
+      value={{
+        token,
+        login,
+        logout,
+        notifications,
+        addNotification,
+        clearNotifications,
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );

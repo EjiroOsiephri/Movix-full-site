@@ -29,7 +29,6 @@ const MainBody = () => {
         options
       );
       const data = await response.json();
-      console.log(data);
       setTrending(data.results);
     } catch (error) {
       console.error("Error fetching trending data:", error);
@@ -54,7 +53,6 @@ const MainBody = () => {
 
       const response = await fetch(endpoint, options);
       const data = await response.json();
-      console.log(data);
       const trailer = data?.results?.find(
         (video) => video.type === "Trailer" && video.site === "YouTube"
       );

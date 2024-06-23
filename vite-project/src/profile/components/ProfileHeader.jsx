@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import {
   FaBell,
   FaCaretDown,
@@ -9,10 +9,29 @@ import {
 } from "react-icons/fa";
 import Classes from "./ProfileHeader.module.scss";
 import { useNavigate } from "react-router-dom";
+import NotificationModal from "./NotificationModal";
+import { AuthContext } from "../../context/AuthContext";
 
 const ProfileHeader = () => {
   const navigate = useNavigate();
+  const context = useContext(AuthContext);
   const [isShownSlide, setIsShownSlide] = useState(false);
+  const [showNotifications, setShowNotifications] = useState(false);
+
+  const number = JSON.parse(localStorage.getItem("number"));
+
+  useEffect(() => {
+    const handleStorageChange = () => {
+      const storedNumber = localStorage.getItem("notificationNumber");
+      setNumber(storedNumber ? parseInt(storedNumber, 10) : 0);
+    };
+
+    window.addEventListener("storage", handleStorageChange);
+
+    return () => {
+      window.removeEventListener("storage", handleStorageChange);
+    };
+  }, []);
 
   const navigateToHome = () => {
     navigate("/");
@@ -24,6 +43,14 @@ const ProfileHeader = () => {
 
   const cancelSlideIn = () => {
     setIsShownSlide(false);
+  };
+
+  const handleBellClick = () => {
+    setShowNotifications(true);
+  };
+
+  const closeNotificationsModal = () => {
+    setShowNotifications(false);
   };
 
   return (
@@ -86,7 +113,10 @@ const ProfileHeader = () => {
             <input type="text" placeholder="Search" />
           </div>
           <div className={Classes["notification-section"]}>
-            <FaBell className={Classes["fa-bell"]} />
+            <section onClick={handleBellClick}>
+              <FaBell className={Classes["fa-bell"]} />
+              <p>{number}</p>
+            </section>
             <div className={Classes["profile-section"]}>
               <FaUser className={Classes["fa-user"]} />
               <p>
@@ -96,6 +126,9 @@ const ProfileHeader = () => {
           </div>
         </div>
       </main>
+      {showNotifications && (
+        <NotificationModal onClose={closeNotificationsModal} />
+      )}
     </>
   );
 };
