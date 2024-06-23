@@ -86,6 +86,33 @@ h4 {
   width: 55%;
 }
 
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem 0;
+}
+
+.pagination button {
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  margin: 0 0.5rem;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.pagination button:disabled {
+  background-color: #cbd5e1;
+  cursor: not-allowed;
+}
+
+.pagination span {
+  color: white;
+  margin: 0 1rem;
+}
+
 @keyframes loadingAnimation {
   0% {
     transform: translateX(-100%);
