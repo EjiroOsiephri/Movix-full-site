@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Classes from "./Modal.module.scss";
 
-const Modal = ({ show, onClose, data, trailerKey }) => {
+const Modal = ({ show, onClose, data = {}, trailerKey }) => {
   const [isPlaying, setIsPlaying] = useState(false);
 
   if (!show) {
@@ -15,6 +15,27 @@ const Modal = ({ show, onClose, data, trailerKey }) => {
   const trailerUrl = trailerKey
     ? `https://www.youtube.com/embed/${trailerKey}`
     : data.film_trailer;
+
+  const posterImage =
+    data.images?.poster?.[1]?.medium?.film_image ||
+    (data.poster_path
+      ? `https://image.tmdb.org/t/p/w500${data.poster_path}`
+      : null);
+
+  const filmName =
+    data.film_name || data.title || data.name || "Film Name Unavailable";
+  const synopsisLong =
+    data.synopsis_long || data.overview || "Synopsis Unavailable";
+  const ageRating = data.age_rating?.[0]?.rating || data.vote_average || "N/A";
+  const ageAdvisory =
+    data.age_rating?.[0]?.age_advisory ||
+    (data.adult ? "Adult" : "General Audience");
+  const ageRatingImage =
+    data.age_rating?.[0]?.age_rating_image || data.age_rating;
+  const releaseDate =
+    data.release_dates?.[0]?.release_date ||
+    data.release_date ||
+    "Release Date Unavailable";
 
   return (
     <div className={Classes["modal-overlay"]}>
@@ -31,10 +52,7 @@ const Modal = ({ show, onClose, data, trailerKey }) => {
             ></iframe>
           ) : (
             <>
-              <img
-                src={data.images?.poster[1]?.medium.film_image}
-                alt={data.film_name}
-              />
+              {posterImage && <img src={posterImage} alt={filmName} />}
               <button
                 className={Classes["play-button"]}
                 onClick={handlePlayButtonClick}
@@ -45,16 +63,18 @@ const Modal = ({ show, onClose, data, trailerKey }) => {
           )}
         </div>
         <div className={Classes["modal-data-div"]}>
-          <h1>{data.film_name}</h1>
-          <p>{data.synopsis_long}</p>
+          <h1>{filmName}</h1>
+          <p>{synopsisLong}</p>
           <div>
             <p className={Classes["age-rating"]}>
-              Age Rating: {data.age_rating[0].rating} (
-              {data.age_rating[0].age_advisory})
+              Age Rating: {ageRating} ({ageAdvisory})
             </p>
-            <img src={data.age_rating[0].age_rating_image} alt="Age Rating" />
+            {ageRatingImage && <img src={ageRatingImage} alt="Age Rating" />}
           </div>
-          <p>Release Date: {data.release_dates[0].release_date}</p>
+          <section>
+            <p>Release Date: {releaseDate}</p>
+            <button>+</button>
+          </section>
         </div>
       </div>
       <button className={Classes["close-button"]} onClick={onClose}>

@@ -6,6 +6,7 @@
 .fetchData-section {
   margin-top: 2rem;
   display: flex;
+  cursor: pointer;
   gap: 15px;
   overflow-x: auto;
 }
@@ -33,6 +34,7 @@
 .fetchData div {
   display: flex;
   flex-direction: column;
+  cursor: pointer;
 }
 .fetchData div h1 {
   color: white;

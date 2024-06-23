@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Classes from "./Recommended.module.scss";
-import Modal from "./Modal"; // Make sure the path is correct
+import Modal from "./Modal";
 
 const Recommended = () => {
   const [recommended, setRecommended] = useState(null);
@@ -9,14 +9,13 @@ const Recommended = () => {
   const [selectedData, setSelectedData] = useState(null);
 
   const fetchData = async () => {
-    const url = "http://localhost:8000/api/movies"; // Your backend URL
+    const url = "http://localhost:8000/api/movies";
 
     try {
       const response = await fetch(url);
       const result = await response.json();
       setRecommended(result.films);
       setIsLoading(false);
-      console.log(result);
     } catch (error) {
       console.error(error);
       setIsLoading(true);

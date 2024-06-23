@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Classes from "./Trending.module.scss";
-import Modal from "./Modal"; // Make sure the path is correct
+import Modal from "./Modal";
 
 const Trending = () => {
   const [trendingData, setTrendingData] = useState(null);
@@ -18,7 +18,7 @@ const Trending = () => {
         headers: {
           accept: "application/json",
           Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2MGVlZTQwY2YzYWY5MDdmMTI1MzIwODIwMjBjM2U3OCIsInN1YiI6IjY2NzE1MDllMjQwNjQwZDY1NTgzY2NlMCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.BNdaKLfxJSf8bV3jgJe1TinDAFZQK5g43QPfag3m4YE",
+            "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2MGVlZTQwY2Y5MDdmMTI1MzIwODIwMjBjM2U3OCIsInN1YiI6IjY2NzE1MDllMjQwNjQwZDY1NTgzY2NlMCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.BNdaKLfxJSf8bV3jgJe1TinDAFZQK5g43QPfag3m4YE",
         },
       };
 
@@ -37,21 +37,23 @@ const Trending = () => {
     }
   };
 
-  const fetchMovieTrailer = async (movieId) => {
+  const fetchTrailerKey = async (mediaId, mediaType) => {
     const options = {
       method: "GET",
       headers: {
         accept: "application/json",
         Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2MGVlZTQwY2YzYWY5MDdmMTI1MzIwODIwMjBjM2U3OCIsInN1YiI6IjY2NzE1MDllMjQwNjQwZDY1NTgzY2NlMCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.BNdaKLfxJSf8bV3jgJe1TinDAFZQK5g43QPfag3m4YE",
+          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2MGVlZTQwY2Y5MDdmMTI1MzIwODIwMjBjM2U3OCIsInN1YiI6IjY2NzE1MDllMjQwNjQwZDY1NTgzY2NlMCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.BNdaKLfxJSf8bV3jgJe1TinDAFZQK5g43QPfag3m4YE",
       },
     };
 
     try {
-      const response = await fetch(
-        `https://api.themoviedb.org/3/movie/${movieId}/videos?language=en-US`,
-        options
-      );
+      const endpoint =
+        mediaType === "movie"
+          ? `https://api.themoviedb.org/3/movie/${mediaId}/videos`
+          : `https://api.themoviedb.org/3/tv/${mediaId}/videos`;
+
+      const response = await fetch(endpoint, options);
       const data = await response.json();
       const trailer = data.results.find((video) => video.type === "Trailer");
       setTrailerKey(trailer ? trailer.key : null);
@@ -61,7 +63,7 @@ const Trending = () => {
   };
 
   const handleDivClick = async (data) => {
-    await fetchMovieTrailer(data.id);
+    await fetchTrailerKey(data.id, data.media_type);
     setSelectedData(data);
     setShowModal(true);
   };

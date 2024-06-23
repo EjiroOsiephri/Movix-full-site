@@ -5,141 +5,111 @@ import SideBody from "./SideBody";
 import Classes from "./MainBody.module.scss";
 import Recommended from "./Recommended";
 import Trending from "./Trending";
+import Modal from "./Modal"; // Import the Modal component
 
 const MainBody = () => {
-  const [data, setData] = useState(null);
-  const [series, setSeriesData] = useState(null);
-  const [seriesTwo, setSeriesTwo] = useState(null);
-  const [recommended, setRecommended] = useState([]);
+  const [trending, setTrending] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+  const [trailerKey, setTrailerKey] = useState(null);
+  const [selectedMovie, setSelectedMovie] = useState({});
 
-  async function fetchData(url, setState, fallbackData = {}) {
+  async function fetchTrending() {
     const options = {
       method: "GET",
       headers: {
-        "x-rapidapi-key": "69ef76a2d6msh78df5328b15841ap1138efjsnfee5e8f73f9f",
-        "x-rapidapi-host": "imdb-top-100-movies.p.rapidapi.com",
+        accept: "application/json",
+        Authorization:
+          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2MGVlZTQwY2YzYWY5MDdmMTI1MzIwODIwMjBjM2U3OCIsInN1YiI6IjY2NzE1MDllMjQwNjQwZDY1NTgzY2NlMCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.BNdaKLfxJSf8bV3jgJe1TinDAFZQK5g43QPfag3m4YE",
       },
     };
 
     try {
-      const response = await fetch(url, options);
-      if (!response.ok) {
-        throw new Error("API limit exceeded");
-      }
-      const result = await response.json();
-      setState(result);
+      const response = await fetch(
+        "https://api.themoviedb.org/3/trending/all/day?page=1",
+        options
+      );
+      const data = await response.json();
+      console.log(data);
+      setTrending(data.results);
     } catch (error) {
-      console.error(error);
-      setState(fallbackData);
+      console.error("Error fetching trending data:", error);
+    }
+  }
+
+  async function fetchTrailerKey(mediaId, mediaType) {
+    const options = {
+      method: "GET",
+      headers: {
+        accept: "application/json",
+        Authorization:
+          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2MGVlZTQwY2YzYWY5MDdmMTI1MzIwODIwMjBjM2U3OCIsInN1YiI6IjY2NzE1MDllMjQwNjQwZDY1NTgzY2NlMCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.BNdaKLfxJSf8bV3jgJe1TinDAFZQK5g43QPfag3m4YE",
+      },
+    };
+
+    try {
+      const endpoint =
+        mediaType === "movie"
+          ? `https://api.themoviedb.org/3/movie/${mediaId}/videos`
+          : `https://api.themoviedb.org/3/tv/${mediaId}/videos`;
+
+      const response = await fetch(endpoint, options);
+      const data = await response.json();
+      console.log(data);
+      const trailer = data?.results?.find(
+        (video) => video.type === "Trailer" && video.site === "YouTube"
+      );
+      setTrailerKey(trailer ? trailer.key : null);
+    } catch (error) {
+      console.error("Error fetching trailer key:", error);
     }
   }
 
   useEffect(() => {
-    fetchData("https://imdb-top-100-movies.p.rapidapi.com/top1", setData, {
-      big_image:
-        "https://i0.wp.com/itsmoreofacomment.com/wp-content/uploads/2021/09/Dune-Movie-Official-Poster-banner-feature.jpg?w=1440&ssl=1",
-      title: "D U N E",
-      genre: ["Action", "Drama"],
-      year: "2023",
-    });
-    fetchData(
-      "https://imdb-top-100-movies.p.rapidapi.com/top2",
-      setSeriesData,
-      {
-        image: "https://via.placeholder.com/800x400?text=Second+Slide",
-        title: "Dummy Series 1",
-        genre: ["Thriller", "Mystery"],
-        year: "2022",
-      }
-    );
-    fetchData("https://imdb-top-100-movies.p.rapidapi.com/top3", setSeriesTwo, {
-      image: "https://via.placeholder.com/800x400?text=Third+Slide",
-      title: "Dummy Series 2",
-      genre: ["Comedy", "Romance"],
-      year: "2021",
-    });
-
-    // Fetch recommended data
-    fetchData(
-      "https://imdb-top-100-movies.p.rapidapi.com/top4",
-      setRecommended
-    );
+    fetchTrending();
   }, []);
 
-  console.log(recommended);
+  const handleWatchClick = async (item) => {
+    await fetchTrailerKey(item.id, item.media_type);
+    setSelectedMovie(item);
+    setShowModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+    setTrailerKey(null);
+    setSelectedMovie({});
+  };
 
   return (
     <main className={Classes["main-container"]}>
       <section className={Classes["mainbody-section"]}>
         <Carousel showThumbs={false}>
-          {/* First slide section */}
-          {data && (
-            <div className={Classes["slide"]}>
-              <img src={data?.big_image} alt="first" />
+          {trending?.slice(0, 6).map((item, index) => (
+            <div className={Classes["slide"]} key={index}>
+              <img
+                src={`https://image.tmdb.org/t/p/w500${item.backdrop_path}`}
+                alt={item.title || item.name}
+              />
               <section className={Classes["textData"]}>
                 <div className={Classes["textData-div"]}>
-                  <h1>{data?.title}</h1>
+                  <h1>{item.title || item.name}</h1>
                   <div className={Classes["mini-text-data"]}>
-                    {data?.genre.map((genre, id) => (
-                      <h5 key={id}>{genre}</h5>
-                    ))}
-                    <h5>{data?.year}</h5>
+                    <h5>{item.media_type}</h5>
+                    <h5>
+                      {new Date(
+                        item.release_date || item.first_air_date
+                      ).getFullYear()}
+                    </h5>
                   </div>
                 </div>
                 <div className={Classes["btn-div"]}>
-                  <button>Watch</button>
+                  <button onClick={() => handleWatchClick(item)}>Watch</button>
                   <button>+</button>
                 </div>
               </section>
             </div>
-          )}
-
-          {/* Second slide section */}
-          {series && (
-            <div className={Classes["slide"]}>
-              <img src={series?.image} alt="second" />
-              <section className={Classes["textData"]}>
-                <div className={Classes["textData-div"]}>
-                  <h1>{series?.title}</h1>
-                  <div className={Classes["mini-text-data"]}>
-                    {series.genre.map((genre, id) => (
-                      <h5 key={id}>{genre}</h5>
-                    ))}
-                    <h5>{series?.year}</h5>
-                  </div>
-                </div>
-                <div className={Classes["btn-div"]}>
-                  <button>Watch</button>
-                  <button>+</button>
-                </div>
-              </section>
-            </div>
-          )}
-
-          {/* Third slide section */}
-          {seriesTwo && (
-            <div className={Classes["slide"]}>
-              <img src={seriesTwo?.image} alt="third" />
-              <section className={Classes["textData"]}>
-                <div className={Classes["textData-div"]}>
-                  <h1>{seriesTwo?.title}</h1>
-                  <div className={Classes["mini-text-data"]}>
-                    {seriesTwo?.genre.map((genre, id) => (
-                      <h5 key={id}>{genre}</h5>
-                    ))}
-                    <h5>{seriesTwo?.year}</h5>
-                  </div>
-                </div>
-                <div className={Classes["btn-div"]}>
-                  <button>Watch</button>
-                  <button>+</button>
-                </div>
-              </section>
-            </div>
-          )}
+          ))}
         </Carousel>
-
-        {/* New section */}
 
         <section className={Classes["recommended-section"]}>
           <Recommended />
@@ -150,11 +120,16 @@ const MainBody = () => {
         </section>
       </section>
 
-      {/* sidebody section */}
-
       <section className={Classes["side-body"]}>
         <SideBody />
       </section>
+
+      <Modal
+        show={showModal}
+        onClose={handleCloseModal}
+        data={selectedMovie}
+        trailerKey={trailerKey}
+      />
     </main>
   );
 };

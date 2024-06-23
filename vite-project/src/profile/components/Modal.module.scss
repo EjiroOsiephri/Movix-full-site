@@ -63,6 +63,9 @@
   gap: 30px;
   align-items: center;
 }
+.modal-data-div > div > img {
+  margin-bottom: 1em;
+}
 
 .media-container img,
 .media-container iframe {
@@ -87,6 +90,30 @@
   padding: 1rem 1.5rem;
   cursor: pointer;
   border-radius: 50%;
+}
+.modal-data-div section {
+  display: flex;
+  gap: 50px;
+}
+.modal-data-div section p {
+  align-self: center;
+}
+.modal-data-div section button {
+  font-size: 30px;
+  align-self: center;
+  width: 100px;
+  padding: 10px;
+  background-color: transparent;
+  color: white;
+  border: 2px solid white;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.5s ease-in-out;
+}
+
+.modal-data-div section button:hover {
+  background-color: white;
+  color: #091833;
 }
 
 @media screen and (max-width: 678px) {
