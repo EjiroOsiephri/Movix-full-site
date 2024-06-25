@@ -32,10 +32,27 @@
     overflow-y: auto;
 
     li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       padding: 10px;
       border-bottom: 1px solid #ccc;
       font-size: 14px;
       color: #666;
+
+      &:hover {
+        background-color: #f9f9f9;
+      }
+
+      .delete-icon {
+        color: red;
+        cursor: pointer;
+        transition: color 0.3s ease;
+
+        &:hover {
+          color: darkred;
+        }
+      }
     }
   }
 
@@ -53,4 +70,9 @@
       background-color: #0056b3;
     }
   }
+}
+.delete-icon {
+  cursor: pointer;
+  color: red;
+  margin-left: 10px;
 }

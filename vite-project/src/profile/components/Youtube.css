@@ -1,0 +1,23 @@
+.youtube-player {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.youtube-div {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+  height: 0;
+}
+
+@media screen and (max-width: 828px) {
+  .youtube-player {
+    height: initial;
+  }
+  .youtube-div {
+    left: -12%;
+    padding-bottom: 150%;
+  }
+}

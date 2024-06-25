@@ -19,6 +19,7 @@
   padding: 2rem;
   border-radius: 10px;
   position: relative;
+  margin-top: 10rem;
   z-index: 300;
 }
 
@@ -46,10 +47,21 @@
   margin: 2rem 0;
 }
 
+.modal-data-div {
+  .synopsis-long {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
 .modal-data-div p:nth-child(2) {
   margin: 2rem 0;
   font-weight: 200;
   font-size: 15px;
+  -webkit-line-clamp: 6;
   color: white;
 }
 
@@ -124,6 +136,7 @@
   }
   .modal {
     width: 100%;
+    margin-top: 1rem;
   }
   .close-button {
     top: 1px;

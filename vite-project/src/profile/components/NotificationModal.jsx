@@ -1,9 +1,8 @@
 import React from "react";
 import Classes from "./NotificationModal.module.scss";
+import { FaTrash } from "react-icons/fa";
 
-const NotificationModal = ({ onClose }) => {
-  const getItem = JSON.parse(localStorage.getItem("notificationData")) || [];
-
+const NotificationModal = ({ notifications, onClose, deleteNotification }) => {
   return (
     <div className={Classes["notification-modal-overlay"]} onClick={onClose}>
       <div
@@ -12,10 +11,19 @@ const NotificationModal = ({ onClose }) => {
       >
         <h2>Notifications</h2>
         <ul>
-          {getItem.length > 0 ? (
-            getItem.map((notification, index) => (
+          {notifications.length > 0 ? (
+            notifications.map((notification, index) => (
               <li key={index}>
                 {notification.filmName} - {notification.message}
+                <FaTrash
+                  className={Classes["delete-icon"]}
+                  onClick={() => deleteNotification(notification.filmName)}
+                  style={{
+                    color: "red",
+                    marginLeft: "10px",
+                    cursor: "pointer",
+                  }}
+                />
               </li>
             ))
           ) : (

@@ -42,12 +42,13 @@ const Modal = ({ show, onClose, data = {}, trailerKey }) => {
     "Release Date Unavailable";
 
   const addNotificationHandler = () => {
-    const storedId = localStorage.getItem("notificationId");
-    if (parseInt(storedId, 10) !== data.id) {
-      localStorage.setItem("notificationId", data.id);
+    const existingNotifications =
+      JSON.parse(localStorage.getItem("notificationData")) || [];
+    const isAlreadyNotified = existingNotifications.some(
+      (notification) => notification.filmName === filmName
+    );
 
-      const existingNotifications =
-        JSON.parse(localStorage.getItem("notificationData")) || [];
+    if (!isAlreadyNotified) {
       const newNotification = {
         filmName,
         message: `Added ${filmName} to notifications.`,
@@ -66,8 +67,14 @@ const Modal = ({ show, onClose, data = {}, trailerKey }) => {
 
       localStorage.setItem(
         "number",
-        JSON.stringify(updatedNotifications?.length)
+        JSON.stringify(updatedNotifications.length)
       );
+
+      // Emit a custom event
+      const event = new CustomEvent("notificationChange", {
+        detail: { notifications: updatedNotifications },
+      });
+      window.dispatchEvent(event);
     } else {
       console.log("Notification already added.");
       toast.info(`"${filmName}" is already in notifications.`);
@@ -101,7 +108,7 @@ const Modal = ({ show, onClose, data = {}, trailerKey }) => {
         </div>
         <div className={Classes["modal-data-div"]}>
           <h1>{filmName}</h1>
-          <p>{synopsisLong}</p>
+          <p className={Classes["synopsis-long"]}>{synopsisLong}</p>
           <div>
             <p className={Classes["age-rating"]}>
               Age Rating: {ageRating} ({ageAdvisory})

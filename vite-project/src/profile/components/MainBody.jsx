@@ -1,17 +1,31 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import SideBody from "./SideBody";
 import Classes from "./MainBody.module.scss";
 import Recommended from "./Recommended";
 import Trending from "./Trending";
-import Modal from "./Modal"; // Import the Modal component
+import Modal from "./Modal";
+import { toast, Toaster } from "react-hot-toast";
+import { AuthContext } from "../../context/AuthContext";
+import YouTubePlayer from "./YouTubePlayer";
 
 const MainBody = () => {
   const [trending, setTrending] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [trailerKey, setTrailerKey] = useState(null);
   const [selectedMovie, setSelectedMovie] = useState({});
+  const context = useContext(AuthContext);
+
+  useEffect(() => {
+    fetchTrending();
+  }, []);
+
+  useEffect(() => {
+    if (trending.length > 0) {
+      fetchTrailerKey(trending[0].id, trending[0].media_type);
+    }
+  }, [trending]);
 
   async function fetchTrending() {
     const options = {
@@ -48,8 +62,8 @@ const MainBody = () => {
     try {
       const endpoint =
         mediaType === "movie"
-          ? `https://api.themoviedb.org/3/movie/${mediaId}/videos`
-          : `https://api.themoviedb.org/3/tv/${mediaId}/videos`;
+          ? `https://api.themoviedb.org/3/movie/${mediaId}/videos?language=en-US`
+          : `https://api.themoviedb.org/3/tv/${mediaId}/videos?language=en-US`;
 
       const response = await fetch(endpoint, options);
       const data = await response.json();
@@ -61,10 +75,6 @@ const MainBody = () => {
       console.error("Error fetching trailer key:", error);
     }
   }
-
-  useEffect(() => {
-    fetchTrending();
-  }, []);
 
   const handleWatchClick = async (item) => {
     await fetchTrailerKey(item.id, item.media_type);
@@ -78,16 +88,60 @@ const MainBody = () => {
     setSelectedMovie({});
   };
 
+  const addNotificationHandler = (item) => {
+    const existingNotifications =
+      JSON.parse(localStorage.getItem("notificationData")) || [];
+    const filmName = item.title || item.name;
+
+    const isAlreadyNotified = existingNotifications.some(
+      (notification) => notification.filmName === filmName
+    );
+
+    if (!isAlreadyNotified) {
+      const newNotification = {
+        filmName,
+        message: `Added ${filmName} to notifications.`,
+      };
+
+      const updatedNotifications = [...existingNotifications, newNotification];
+
+      localStorage.setItem(
+        "notificationData",
+        JSON.stringify(updatedNotifications)
+      );
+
+      context.addNotification(updatedNotifications);
+
+      localStorage.setItem(
+        "number",
+        JSON.stringify(updatedNotifications.length)
+      );
+
+      toast.success(`Added "${filmName}" to notifications.`);
+      const event = new CustomEvent("notificationChange", {
+        detail: { notifications: updatedNotifications },
+      });
+      window.dispatchEvent(event);
+    } else {
+      console.log("Notification already added.");
+      toast?.info(`"${filmName}" is already in notifications.`);
+    }
+  };
+
   return (
     <main className={Classes["main-container"]}>
       <section className={Classes["mainbody-section"]}>
         <Carousel showThumbs={false}>
           {trending?.slice(0, 6).map((item, index) => (
             <div className={Classes["slide"]} key={index}>
-              <img
-                src={`https://image.tmdb.org/t/p/w500${item.backdrop_path}`}
-                alt={item.title || item.name}
-              />
+              {index === 0 && trailerKey ? (
+                <YouTubePlayer videoId={trailerKey} />
+              ) : (
+                <img
+                  src={`https://image.tmdb.org/t/p/w500${item.backdrop_path}`}
+                  alt={item.title || item.name}
+                />
+              )}
               <section className={Classes["textData"]}>
                 <div className={Classes["textData-div"]}>
                   <h1>{item.title || item.name}</h1>
@@ -102,7 +156,9 @@ const MainBody = () => {
                 </div>
                 <div className={Classes["btn-div"]}>
                   <button onClick={() => handleWatchClick(item)}>Watch</button>
-                  <button>+</button>
+                  <button onClick={() => addNotificationHandler(item)}>
+                    +
+                  </button>
                 </div>
               </section>
             </div>
@@ -128,6 +184,7 @@ const MainBody = () => {
         data={selectedMovie}
         trailerKey={trailerKey}
       />
+      <Toaster position="top-right" reverseOrder={false} />
     </main>
   );
 };

@@ -17,19 +17,37 @@ const ProfileHeader = () => {
   const context = useContext(AuthContext);
   const [isShownSlide, setIsShownSlide] = useState(false);
   const [showNotifications, setShowNotifications] = useState(false);
-
-  const number = JSON.parse(localStorage.getItem("number"));
+  const [notificationCount, setNotificationCount] = useState(0);
+  const [notifications, setNotifications] = useState([]);
 
   useEffect(() => {
+    const storedNotifications =
+      JSON.parse(localStorage.getItem("notificationData")) || [];
+    setNotifications(storedNotifications);
+    setNotificationCount(storedNotifications.length);
+
     const handleStorageChange = () => {
-      const storedNumber = localStorage.getItem("notificationNumber");
-      setNumber(storedNumber ? parseInt(storedNumber, 10) : 0);
+      const updatedNotifications =
+        JSON.parse(localStorage.getItem("notificationData")) || [];
+      setNotifications(updatedNotifications);
+      setNotificationCount(updatedNotifications.length);
     };
 
     window.addEventListener("storage", handleStorageChange);
 
+    const handleNotificationChange = (event) => {
+      setNotifications(event.detail.notifications);
+      setNotificationCount(event.detail.notifications.length);
+    };
+
+    window.addEventListener("notificationChange", handleNotificationChange);
+
     return () => {
       window.removeEventListener("storage", handleStorageChange);
+      window.removeEventListener(
+        "notificationChange",
+        handleNotificationChange
+      );
     };
   }, []);
 
@@ -53,6 +71,23 @@ const ProfileHeader = () => {
     setShowNotifications(false);
   };
 
+  const deleteNotification = (filmName) => {
+    const updatedNotifications = notifications.filter(
+      (notification) => notification.filmName !== filmName
+    );
+    setNotifications(updatedNotifications);
+    setNotificationCount(updatedNotifications.length);
+    localStorage.setItem(
+      "notificationData",
+      JSON.stringify(updatedNotifications)
+    );
+    localStorage.setItem("number", JSON.stringify(updatedNotifications.length));
+    const event = new CustomEvent("notificationChange", {
+      detail: { notifications: updatedNotifications },
+    });
+    window.dispatchEvent(event);
+  };
+
   return (
     <>
       <main className={Classes["main-profile"]}>
@@ -64,23 +99,11 @@ const ProfileHeader = () => {
             <FaBars
               className={Classes["fa-bars"]}
               onClick={showSlideIn}
-              style={
-                isShownSlide
-                  ? {
-                      display: "none",
-                    }
-                  : {}
-              }
+              style={isShownSlide ? { display: "none" } : {}}
             />
             <FaTimes
               className={Classes["fa-times"]}
-              style={
-                isShownSlide
-                  ? {
-                      display: "block",
-                    }
-                  : {}
-              }
+              style={isShownSlide ? { display: "block" } : {}}
               onClick={cancelSlideIn}
             />
           </div>
@@ -115,7 +138,7 @@ const ProfileHeader = () => {
           <div className={Classes["notification-section"]}>
             <section onClick={handleBellClick}>
               <FaBell className={Classes["fa-bell"]} />
-              <p>{number}</p>
+              <p>{notificationCount}</p>
             </section>
             <div className={Classes["profile-section"]}>
               <FaUser className={Classes["fa-user"]} />
@@ -127,7 +150,11 @@ const ProfileHeader = () => {
         </div>
       </main>
       {showNotifications && (
-        <NotificationModal onClose={closeNotificationsModal} />
+        <NotificationModal
+          notifications={notifications}
+          onClose={closeNotificationsModal}
+          deleteNotification={deleteNotification}
+        />
       )}
     </>
   );
