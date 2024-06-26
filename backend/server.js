@@ -3,22 +3,16 @@ const https = require("https");
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
+const path = require("path");
 const auth = require("./middlewares/google-auth");
 
 require("dotenv").config();
 
 const userRoutes = require("./routes/user-routes");
 const movieRoutes = require("./routes/movie-routes");
+const uploadRoutes = require("./routes/upload-routes");
 
 const PORT = 8000 || process.env.PORT;
-
-// const server = https.createServer(
-//   {
-//     key: fs.readFileSync("key.pem"),
-//     cert: fs.readFileSync("cert.pem"),
-//   },
-//   auth
-// );
 
 const app = express();
 
@@ -36,6 +30,8 @@ app.use((req, res, next) => {
 });
 
 app.use("/api/users", userRoutes);
+app.use("/api/upload", uploadRoutes);
+app.use("/api/uploads", express.static(path.join(__dirname, "uploads")));
 app.use("/api", movieRoutes);
 
 app.use((error, req, res, next) => {

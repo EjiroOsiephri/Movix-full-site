@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Classes from "./Recommended.module.scss";
 import Modal from "./Modal";
 
-const Recommended = () => {
+const Recommended = ({ searchTerm }) => {
   const [recommended, setRecommended] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [showModal, setShowModal] = useState(false);
@@ -36,6 +36,11 @@ const Recommended = () => {
     setSelectedData(null);
   };
 
+  const filteredData = recommended?.filter((data) => {
+    const title = data.film_name;
+    return title.toLowerCase().includes(searchTerm.toLowerCase());
+  });
+
   return (
     <>
       {isLoading ? (
@@ -56,7 +61,7 @@ const Recommended = () => {
         <main className={Classes["fetchData-main"]}>
           <h1>Recommended</h1>
           <section className={Classes["fetchData-section"]}>
-            {recommended?.map((data, id) => (
+            {filteredData?.map((data, id) => (
               <section
                 className={Classes["fetchData-div"]}
                 key={id}

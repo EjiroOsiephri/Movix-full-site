@@ -6,6 +6,7 @@ import img4 from "../../assets/scale.jpg";
 import img5 from "../../assets/b.jpg";
 import img6 from "../../assets/d.jpg";
 import img7 from "../../assets/m.jpg";
+import { useNavigate } from "react-router-dom";
 
 const MovieBody = () => {
   const [imgUrl, setImgUrl] = useState(img4);
@@ -13,6 +14,8 @@ const MovieBody = () => {
   const [imgDescription, setImgDescription] = useState(
     "A paraplegic Marine dispatched to the moon Pandora on a unique mission "
   );
+
+  const navigate = useNavigate();
 
   const imgArray = [
     {
@@ -62,6 +65,10 @@ const MovieBody = () => {
     setImgDescription(newImgDescription);
   };
 
+  const navigateToLoginPage = () => {
+    navigate("/signin");
+  };
+
   return (
     <>
       <main
@@ -90,8 +97,8 @@ const MovieBody = () => {
           <h4>{imgDescription}</h4>
         </section>
         <div className={Classes["btn-div"]}>
-          <button>Watch</button>
-          <button>Trailer</button>
+          <button onClick={navigateToLoginPage}>Watch</button>
+          <button onClick={navigateToLoginPage}>Trailer</button>
         </div>
         <section className={Classes["mapImgArray"]}>
           {imgArray.map((item, index) => {

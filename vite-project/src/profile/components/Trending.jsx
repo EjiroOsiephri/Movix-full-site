@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import Classes from "./Trending.module.scss";
 import Modal from "./Modal";
 
-const Trending = () => {
-  const [trendingData, setTrendingData] = useState(null);
+const Trending = ({ selectedCategory, searchTerm }) => {
+  const [trendingData, setTrendingData] = useState([]);
   const [loading, setIsLoading] = useState(true);
   const [showModal, setShowModal] = useState(false);
   const [selectedData, setSelectedData] = useState(null);
@@ -11,7 +11,8 @@ const Trending = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
 
-  const fetchData = async (page) => {
+  const fetchData = async (page, category = "all") => {
+    setIsLoading(true);
     try {
       const options = {
         method: "GET",
@@ -22,18 +23,25 @@ const Trending = () => {
         },
       };
 
-      const response = await fetch(
-        `https://api.themoviedb.org/3/trending/all/day?language=en-US&page=${page}`,
-        options
-      );
+      let endpoint = `https://api.themoviedb.org/3/trending/all/day?language=en-US&page=${page}`;
+      if (category === "movie") {
+        endpoint = `https://api.themoviedb.org/3/trending/movie/day?language=en-US&page=${page}`;
+      } else if (category === "tv") {
+        endpoint = `https://api.themoviedb.org/3/trending/tv/day?language=en-US&page=${page}`;
+      } else if (category === "series") {
+        endpoint = `https://api.themoviedb.org/3/trending/tv/day?language=en-US&page=${page}`;
+      } else if (category === "animation") {
+        endpoint = `https://api.themoviedb.org/3/trending/animation/day?language=en-US&page=${page}`;
+      }
 
+      const response = await fetch(endpoint, options);
       const data = await response.json();
-      setTrendingData(data.results);
-      setTotalPages(data.total_pages);
+      setTrendingData(data.results || []);
+      setTotalPages(data.total_pages || 1);
       setIsLoading(false);
     } catch (error) {
       console.log(error);
-      setIsLoading(true);
+      setIsLoading(false);
     }
   };
 
@@ -43,7 +51,7 @@ const Trending = () => {
       headers: {
         accept: "application/json",
         Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2MGVlZTQwY2YzYWY5MDdmMTI1MzIwODIwMjBjM2U3OCIsInN1YiI6IjY2NzE1MDllMjQwNjQwZDY1NTgzY2NlMCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.BNdaKLfxJSf8bV3jgJe1TinDAFZQK5g43QPfag3m4YE",
+          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2MGVlZTQwY2YzYWY5MDfmZIzIwODIwMjBjM2U3OCIsInN1YiI6IjY2NzE1MDllMjQwNjQwZDY1NTgzY2NlMCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.BNdaKLfxJSf8bV3jgJe1TinDAFZQK5g43QPfag3m4YE",
       },
     };
 
@@ -87,8 +95,13 @@ const Trending = () => {
   };
 
   useEffect(() => {
-    fetchData(currentPage);
-  }, [currentPage]);
+    fetchData(currentPage, selectedCategory);
+  }, [currentPage, selectedCategory]);
+
+  const filteredData = trendingData?.filter((data) => {
+    const title = data.original_title || data.name;
+    return title.toLowerCase().includes(searchTerm.toLowerCase());
+  });
 
   return (
     <>
@@ -110,23 +123,30 @@ const Trending = () => {
         <section>
           <h1 className={Classes["trending-texts"]}>Trending</h1>
           <main className={Classes["main-trending-container"]}>
-            {trendingData?.map((data) => (
-              <div
-                className={Classes["mappedDivTexts"]}
-                key={data.id}
-                onClick={() => handleDivClick(data)}
-              >
-                <img
-                  src={`https://image.tmdb.org/t/p/w200${data.poster_path}`}
-                  alt={data.name}
-                />
-                <section>
-                  <h1>{data.original_title || data.name}</h1>
-                  <h4>{data.vote_average}</h4>
-                </section>
-              </div>
-            ))}
+            {filteredData?.length === 0 ? (
+              <div className={Classes["no-data"]}>No Data Found</div>
+            ) : (
+              filteredData?.map((data) => (
+                <div
+                  className={Classes["mappedDivTexts"]}
+                  key={data.id}
+                  onClick={() => handleDivClick(data)}
+                >
+                  <img
+                    src={`https://image.tmdb.org/t/p/w200${data.poster_path}`}
+                    alt={data.name}
+                  />
+                  <section>
+                    <h1>{data.original_title || data.name}</h1>
+                    <h4>{data.vote_average}</h4>
+                  </section>
+                </div>
+              ))
+            )}
           </main>
+          {trendingData.length === 0 && (
+            <div className={Classes["no-data"]}>No Data Found</div>
+          )}
           <div className={Classes["pagination"]}>
             <button onClick={handlePreviousPage} disabled={currentPage === 1}>
               Previous

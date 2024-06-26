@@ -10,7 +10,7 @@ import { toast, Toaster } from "react-hot-toast";
 import { AuthContext } from "../../context/AuthContext";
 import YouTubePlayer from "./YouTubePlayer";
 
-const MainBody = () => {
+const MainBody = ({ selectedCategory, searchTerm }) => {
   const [trending, setTrending] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [trailerKey, setTrailerKey] = useState(null);
@@ -166,11 +166,14 @@ const MainBody = () => {
         </Carousel>
 
         <section className={Classes["recommended-section"]}>
-          <Recommended />
+          <Recommended searchTerm={searchTerm} />
         </section>
 
         <section className={Classes["trending-section"]}>
-          <Trending />
+          <Trending
+            selectedCategory={selectedCategory}
+            searchTerm={searchTerm}
+          />
         </section>
       </section>
 

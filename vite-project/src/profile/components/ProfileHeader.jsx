@@ -10,15 +10,22 @@ import {
 import Classes from "./ProfileHeader.module.scss";
 import { useNavigate } from "react-router-dom";
 import NotificationModal from "./NotificationModal";
+import UploadModal from "./UploadModal";
 import { AuthContext } from "../../context/AuthContext";
 
-const ProfileHeader = () => {
+const ProfileHeader = ({ onCategoryChange, onSearchChange }) => {
   const navigate = useNavigate();
   const context = useContext(AuthContext);
   const [isShownSlide, setIsShownSlide] = useState(false);
   const [showNotifications, setShowNotifications] = useState(false);
   const [notificationCount, setNotificationCount] = useState(0);
   const [notifications, setNotifications] = useState([]);
+  const [profileImage, setProfileImage] = useState(null);
+  const [showUploadModal, setShowUploadModal] = useState(false);
+  const [profileData, setProfileData] = useState();
+
+  const [selectedCategory, setSelectedCategory] = useState("all");
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     const storedNotifications =
@@ -88,6 +95,29 @@ const ProfileHeader = () => {
     window.dispatchEvent(event);
   };
 
+  const handleCategoryChange = (category) => {
+    setSelectedCategory(category);
+    onCategoryChange(category);
+  };
+
+  const handleSearchChange = (event) => {
+    const term = event.target.value;
+    setSearchTerm(term);
+    onSearchChange(term);
+  };
+
+  const handleProfileClick = () => {
+    setShowUploadModal(true);
+  };
+
+  const handleUpload = (imageURL) => {
+    setProfileImage(imageURL);
+  };
+
+  const handleCloseUploadModal = () => {
+    setShowUploadModal(false);
+  };
+
   return (
     <>
       <main className={Classes["main-profile"]}>
@@ -125,23 +155,41 @@ const ProfileHeader = () => {
         >
           <div className={Classes["list-item"]}>
             <ul>
-              <li>Movies</li>
-              <li>Tv Shows</li>
-              <li>Series</li>
-              <li>Animation</li>
+              <li onClick={() => handleCategoryChange("movie")}>Movies</li>
+              <li onClick={() => handleCategoryChange("tv")}>TV Shows</li>
+              <li onClick={() => handleCategoryChange("series")}>Series</li>
+              <li onClick={() => handleCategoryChange("animation")}>
+                Animation
+              </li>
             </ul>
           </div>
           <div className={Classes["search-input"]}>
             <FaSearch className={Classes["search-icon"]} />
-            <input type="text" placeholder="Search" />
+            <input
+              type="text"
+              placeholder="Search"
+              value={searchTerm}
+              onChange={handleSearchChange}
+            />
           </div>
           <div className={Classes["notification-section"]}>
             <section onClick={handleBellClick}>
               <FaBell className={Classes["fa-bell"]} />
               <p>{notificationCount}</p>
             </section>
-            <div className={Classes["profile-section"]}>
-              <FaUser className={Classes["fa-user"]} />
+            <div
+              className={Classes["profile-section"]}
+              onClick={handleProfileClick}
+            >
+              {profileData ? (
+                <img
+                  src={profileData}
+                  alt="Profile"
+                  className={Classes["profileImage"]}
+                />
+              ) : (
+                <FaUser className={Classes["fa-user"]} />
+              )}
               <p>
                 <FaCaretDown className={Classes["dropdown-icon"]} />
               </p>
@@ -154,6 +202,14 @@ const ProfileHeader = () => {
           notifications={notifications}
           onClose={closeNotificationsModal}
           deleteNotification={deleteNotification}
+        />
+      )}
+      {showUploadModal && (
+        <UploadModal
+          show={showUploadModal}
+          onClose={handleCloseUploadModal}
+          onUpload={handleUpload}
+          setProfileData={setProfileData}
         />
       )}
     </>
