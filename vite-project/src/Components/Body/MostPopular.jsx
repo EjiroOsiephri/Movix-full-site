@@ -1,6 +1,7 @@
 import React from "react";
 import Classes from "../../Sass/MostPopular.module.scss";
 import terminator from "../../assets/terminator.jpg";
+import { useNavigate } from "react-router-dom";
 import rambo from "../../assets/rambo.jpg";
 import nun from "../../assets/nun.jpg";
 import gold from "../../assets/gold.jpg";
@@ -11,6 +12,8 @@ import earnbox from "../../assets/earnbox.jpg";
 import blood from "../../assets/blood.jpg";
 
 const MostPopular = () => {
+  const navigate = useNavigate();
+
   const mostPopularArray = [
     { img: rambo, name: "Rambo" },
     { img: nun, name: "Nun" },
@@ -21,16 +24,21 @@ const MostPopular = () => {
     { img: gold, name: "City of Gold" },
     { img: dolittle, name: "Dolittle" },
   ];
+
+  const navigateToSignIn = () => {
+    navigate("/signin");
+  };
+
   return (
     <>
       <main id="about" className={Classes["mostPopular-main"]}>
         <h1>Most Popular Movies</h1>
         <section className={Classes["movieGenre"]}>
-          <div>All</div>
-          <div>Rating</div>
-          <div>Vote</div>
-          <div>Latest</div>
-          <div>General</div>
+          <div onClick={navigateToSignIn}>All</div>
+          <div onClick={navigateToSignIn}>Rating</div>
+          <div onClick={navigateToSignIn}>Vote</div>
+          <div onClick={navigateToSignIn}>Latest</div>
+          <div onClick={navigateToSignIn}>General</div>
         </section>
         <section className={Classes["popularMovieGenre"]}>
           <aside>

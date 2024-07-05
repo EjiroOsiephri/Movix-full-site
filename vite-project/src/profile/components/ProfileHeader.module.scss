@@ -142,6 +142,11 @@ ul {
   border-radius: 50%;
   margin-top: -20%;
 }
+.active {
+  background-color: white;
+  color: rgb(6, 14, 34);
+  border-radius: 25px;
+}
 
 @media screen and (max-width: 1278px) {
   .main-profile {

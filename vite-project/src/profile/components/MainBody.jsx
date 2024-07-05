@@ -134,14 +134,12 @@ const MainBody = ({ selectedCategory, searchTerm }) => {
         <Carousel showThumbs={false}>
           {trending?.slice(0, 6).map((item, index) => (
             <div className={Classes["slide"]} key={index}>
-              {index === 0 && trailerKey ? (
-                <YouTubePlayer videoId={trailerKey} />
-              ) : (
-                <img
-                  src={`https://image.tmdb.org/t/p/w500${item.backdrop_path}`}
-                  alt={item.title || item.name}
-                />
-              )}
+              (
+              <img
+                src={`https://image.tmdb.org/t/p/w500${item.backdrop_path}`}
+                alt={item.title || item.name}
+              />
+              )
               <section className={Classes["textData"]}>
                 <div className={Classes["textData-div"]}>
                   <h1>{item.title || item.name}</h1>

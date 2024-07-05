@@ -1,6 +1,7 @@
 import React from "react";
 import Classes from "../../Sass/Pricing.module.scss";
 import { FaCheck } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 const tableData = [
   {
@@ -34,6 +35,11 @@ const tableData = [
 ];
 
 const Pricing = () => {
+  const navigate = useNavigate();
+
+  const navigateToSignIn = () => {
+    navigate("/signin");
+  };
   return (
     <>
       <main id="pricing" className={Classes["Pricing-main"]}>
@@ -43,9 +49,9 @@ const Pricing = () => {
           est deserunt soluta alias possimus impedit nobis dolorem unde.
         </p>
         <section className={Classes["pricingSection"]}>
-          <div>Basic</div>
-          <div>Standard</div>
-          <div>Premium</div>
+          <div onClick={navigateToSignIn}>Basic</div>
+          <div onClick={navigateToSignIn}>Standard</div>
+          <div onClick={navigateToSignIn}>Premium</div>
         </section>
         <section className={Classes["Movix-table-section"]}>
           <table className={Classes["movix-table"]}>

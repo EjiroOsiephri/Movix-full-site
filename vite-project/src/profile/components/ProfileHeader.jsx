@@ -11,6 +11,7 @@ import Classes from "./ProfileHeader.module.scss";
 import { useNavigate } from "react-router-dom";
 import NotificationModal from "./NotificationModal";
 import UploadModal from "./UploadModal";
+import axios from "axios";
 import { AuthContext } from "../../context/AuthContext";
 
 const ProfileHeader = ({ onCategoryChange, onSearchChange }) => {
@@ -118,6 +119,35 @@ const ProfileHeader = ({ onCategoryChange, onSearchChange }) => {
     setShowUploadModal(false);
   };
 
+  const closeSlide = () => {
+    setIsShownSlide(false);
+  };
+
+  const [profile, setProfile] = useState(null);
+
+  const token = localStorage.getItem("token");
+
+  console.log(token);
+
+  useEffect(() => {
+    const fetchProfile = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:8000/api/users/profile",
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        setProfile(response.data.profile);
+      } catch (error) {
+        console.error("Error fetching profile:", error);
+      }
+    };
+    fetchProfile();
+  }, []);
+
   return (
     <>
       <main className={Classes["main-profile"]}>
@@ -155,10 +185,30 @@ const ProfileHeader = ({ onCategoryChange, onSearchChange }) => {
         >
           <div className={Classes["list-item"]}>
             <ul>
-              <li onClick={() => handleCategoryChange("movie")}>Movies</li>
-              <li onClick={() => handleCategoryChange("tv")}>TV Shows</li>
-              <li onClick={() => handleCategoryChange("series")}>Series</li>
-              <li onClick={() => handleCategoryChange("animation")}>
+              <li
+                className={selectedCategory === "movie" ? Classes.active : ""}
+                onClick={() => handleCategoryChange("movie")}
+              >
+                Movies
+              </li>
+              <li
+                className={selectedCategory === "tv" ? Classes.active : ""}
+                onClick={() => handleCategoryChange("tv")}
+              >
+                TV Shows
+              </li>
+              <li
+                className={selectedCategory === "series" ? Classes.active : ""}
+                onClick={() => handleCategoryChange("series")}
+              >
+                Series
+              </li>
+              <li
+                className={
+                  selectedCategory === "animation" ? Classes.active : ""
+                }
+                onClick={() => handleCategoryChange("animation")}
+              >
                 Animation
               </li>
             </ul>
@@ -191,7 +241,10 @@ const ProfileHeader = ({ onCategoryChange, onSearchChange }) => {
                 <FaUser className={Classes["fa-user"]} />
               )}
               <p>
-                <FaCaretDown className={Classes["dropdown-icon"]} />
+                <FaCaretDown
+                  onClick={closeSlide}
+                  className={Classes["dropdown-icon"]}
+                />
               </p>
             </div>
           </div>
@@ -206,8 +259,10 @@ const ProfileHeader = ({ onCategoryChange, onSearchChange }) => {
       )}
       {showUploadModal && (
         <UploadModal
+          setIsShownSlide={setIsShownSlide}
           show={showUploadModal}
           onClose={handleCloseUploadModal}
+          profile={profile}
           onUpload={handleUpload}
           setProfileData={setProfileData}
         />

@@ -4,7 +4,6 @@ const {
   signupController,
   loginController,
 } = require("../controllers/user-controller");
-const upload = require("../middlewares/multer-config");
 
 require("dotenv").config();
 

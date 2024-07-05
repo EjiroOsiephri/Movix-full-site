@@ -13,6 +13,8 @@
 }
 
 .modalContent {
+  position: absolute;
+  z-index: 10000;
   background-color: #fefefe;
   margin: auto;
   padding: 20px;
@@ -62,17 +64,42 @@
   color: white;
   border: none;
   padding: 0.5rem 1rem;
-  margin: 1rem 0.5rem;
+  margin: 0 0.5rem;
+  margin-top: 0.5rem;
   cursor: pointer;
+  width: 80%;
   border-radius: 5px;
 }
 
 .profile-btn-upload {
-  background-color: #2563eb;
+  background-color: rgb(7, 26, 77);
   color: white;
+  width: 80%;
   border: none;
   padding: 0.5rem 1rem;
   margin: 0 0.5rem;
   cursor: pointer;
+  margin-top: 0.5rem;
   border-radius: 5px;
+}
+
+.UploadModalForm {
+  width: 100%;
+  border: 1px solid black;
+  margin-bottom: 1rem;
+  border-radius: 4px;
+  height: 50px;
+  line-height: 50px;
+  font-weight: 500;
+  padding: 5px 15px 5px 15px;
+  font-size: 15px;
+  background: transparent;
+  margin-top: 0.8rem;
+}
+
+.error {
+  color: red;
+  margin-top: -10px;
+  margin-bottom: 10px;
+  font-size: 12px;
 }
