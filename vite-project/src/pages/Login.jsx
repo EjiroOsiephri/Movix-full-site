@@ -45,13 +45,16 @@ const Login = () => {
 
     try {
       setIsLoading(true);
-      const response = await fetch("http://localhost:8000/api/users/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, password }),
-      });
+      const response = await fetch(
+        "https://movix-full-site-9.onrender.com/api/users/login",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email, password }),
+        }
+      );
 
       const responseData = await response.json();
 

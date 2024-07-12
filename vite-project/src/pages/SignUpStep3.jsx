@@ -46,13 +46,16 @@ const SignUpStep3 = () => {
 
     try {
       setIsLoading(true);
-      const response = await fetch("http://localhost:8000/api/users/signup", {
-        method: "POST",
-        body: JSON.stringify(createdUser),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const response = await fetch(
+        "https://movix-full-site-9.onrender.com/api/users/signup",
+        {
+          method: "POST",
+          body: JSON.stringify(createdUser),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
       const responseData = await response.json();
 

@@ -8,7 +8,6 @@ import Trending from "./Trending";
 import Modal from "./Modal";
 import { toast, Toaster } from "react-hot-toast";
 import { AuthContext } from "../../context/AuthContext";
-import YouTubePlayer from "./YouTubePlayer";
 
 const MainBody = ({ selectedCategory, searchTerm }) => {
   const [trending, setTrending] = useState([]);

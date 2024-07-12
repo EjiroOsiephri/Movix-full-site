@@ -9,7 +9,7 @@ const Recommended = ({ searchTerm }) => {
   const [selectedData, setSelectedData] = useState(null);
 
   const fetchData = async () => {
-    const url = "http://localhost:8000/api/movies";
+    const url = "https://movix-full-site-9.onrender.com/api/movies";
 
     try {
       const response = await fetch(url);

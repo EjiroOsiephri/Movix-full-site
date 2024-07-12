@@ -4,7 +4,7 @@ module.exports = function (app) {
   app.use(
     "/auth/google",
     createProxyMiddleware({
-      target: "https://localhost:8000",
+      target: "https://movix-full-site-9.onrender.com",
       changeOrigin: true,
     })
   );

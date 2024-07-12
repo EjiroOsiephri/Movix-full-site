@@ -127,7 +127,7 @@ const ProfileHeader = ({ onCategoryChange, onSearchChange }) => {
     const fetchProfile = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:8000/api/users/profile",
+          "https://movix-full-site-9.onrender.com/api/users/profile",
           {
             headers: {
               Authorization: `Bearer ${token}`,
