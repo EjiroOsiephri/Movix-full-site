@@ -21,10 +21,8 @@ const ProfileHeader = ({ onCategoryChange, onSearchChange }) => {
   const [showNotifications, setShowNotifications] = useState(false);
   const [notificationCount, setNotificationCount] = useState(0);
   const [notifications, setNotifications] = useState([]);
-  const [profileImage, setProfileImage] = useState(null);
   const [showUploadModal, setShowUploadModal] = useState(false);
-  const [profileData, setProfileData] = useState();
-
+  const [profileData, setProfileData] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -112,7 +110,7 @@ const ProfileHeader = ({ onCategoryChange, onSearchChange }) => {
   };
 
   const handleUpload = (imageURL) => {
-    setProfileImage(imageURL);
+    setProfileData((prevData) => ({ ...prevData, profileImage: imageURL }));
   };
 
   const handleCloseUploadModal = () => {
@@ -123,11 +121,7 @@ const ProfileHeader = ({ onCategoryChange, onSearchChange }) => {
     setIsShownSlide(false);
   };
 
-  const [profile, setProfile] = useState(null);
-
   const token = localStorage.getItem("token");
-
-  console.log(token);
 
   useEffect(() => {
     const fetchProfile = async () => {
@@ -140,13 +134,13 @@ const ProfileHeader = ({ onCategoryChange, onSearchChange }) => {
             },
           }
         );
-        setProfile(response.data.profile);
+        setProfileData(response.data.profile);
       } catch (error) {
         console.error("Error fetching profile:", error);
       }
     };
     fetchProfile();
-  }, []);
+  }, [token]);
 
   return (
     <>
@@ -173,7 +167,7 @@ const ProfileHeader = ({ onCategoryChange, onSearchChange }) => {
           style={
             isShownSlide
               ? {
-                  position: "absolute",
+                  position: "fixed",
                   left: 0,
                   transition: "0.8s ease",
                 }
@@ -231,9 +225,9 @@ const ProfileHeader = ({ onCategoryChange, onSearchChange }) => {
               className={Classes["profile-section"]}
               onClick={handleProfileClick}
             >
-              {profileData ? (
+              {profileData?.profileImage ? (
                 <img
-                  src={profileData}
+                  src={profileData?.profileImage}
                   alt="Profile"
                   className={Classes["profileImage"]}
                 />
@@ -259,10 +253,8 @@ const ProfileHeader = ({ onCategoryChange, onSearchChange }) => {
       )}
       {showUploadModal && (
         <UploadModal
-          setIsShownSlide={setIsShownSlide}
           show={showUploadModal}
           onClose={handleCloseUploadModal}
-          profile={profile}
           onUpload={handleUpload}
           setProfileData={setProfileData}
         />

@@ -15,13 +15,20 @@
 .modalContent {
   position: absolute;
   z-index: 10000;
+  border-radius: 10px;
   background-color: #fefefe;
   margin: auto;
   padding: 20px;
   border: 1px solid #888;
   width: 80%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   max-width: 500px;
   text-align: center;
+}
+hr {
+  width: 80%;
+  text-align: center;
+  margin: 0 auto;
 }
 
 .modalContent > h2 {
@@ -102,4 +109,19 @@
   margin-top: -10px;
   margin-bottom: 10px;
   font-size: 12px;
+}
+.modalContent > h3 {
+  font-weight: 600;
+  margin-top: 0.6rem;
+  margin-bottom: 0.8rem;
+  text-transform: uppercase;
+}
+.modalContent > div > p {
+  text-align: left;
+  padding: 0.7rem 0;
+  margin-left: 10%;
+}
+.modalContent > div > h3 > span {
+  font-weight: 400;
+  font-size: 14px;
 }

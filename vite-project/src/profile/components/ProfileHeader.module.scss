@@ -87,8 +87,11 @@ ul {
 }
 
 .fa-bell {
-  font-size: 35px;
+  display: flex;
+  align-self: center;
+  font-size: 30px;
   margin-right: 3rem;
+  margin-top: 0.2rem;
 }
 
 .fa-user {
@@ -101,6 +104,7 @@ ul {
 
 .profile-section img {
   width: 40px;
+  height: 40px;
 }
 
 .dropdown-icon {
@@ -130,17 +134,21 @@ ul {
 }
 .notification-section > section > p {
   position: absolute;
-  top: 8px;
+  top: 10px;
   background-color: red;
   padding: 0.5rem;
   border-radius: 10px;
   text-align: center;
-  right: 14.4%;
+  right: 14.56%;
+}
+.profile-section {
+  display: flex;
 }
 .profile-section > img {
-  height: 50px;
+  align-self: center;
   border-radius: 50%;
-  margin-top: -20%;
+  margin-top: -42%;
+  object-fit: cover;
 }
 .active {
   background-color: white;
@@ -150,7 +158,8 @@ ul {
 
 @media screen and (max-width: 1278px) {
   .main-profile {
-    position: relative;
+    position: fixed;
+    top: 0;
     z-index: 100;
     background-color: rgb(6, 14, 34);
   }
@@ -178,9 +187,9 @@ ul {
 
   .interactive-section {
     width: 100vw;
-    position: absolute; /* Change from relative to absolute */
+    position: fixed;
     left: -150%;
-    top: 100%;
+    top: 69px;
     overflow: hidden;
     padding: 0.8rem;
     z-index: 100;

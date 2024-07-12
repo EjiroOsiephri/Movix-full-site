@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Classes from "./UploadModal.module.scss";
 
-const UploadModal = ({ show, onClose, onUpload, setProfileData }) => {
+const UploadModal = ({ show, onClose, setProfileData }) => {
   const [file, setFile] = useState(null);
   const [preview, setPreview] = useState(null);
   const [username, setUsername] = useState("");
@@ -23,18 +23,17 @@ const UploadModal = ({ show, onClose, onUpload, setProfileData }) => {
           }
         );
 
-        console.log(response.data);
-
-        setProfile(response.data);
-        setUsername(response.data.name);
-        setDescription(response.data.bio);
+        setProfile(response.data.profile);
+        setUsername(response.data.profile.name);
+        setDescription(response.data.profile.bio);
+        setPreview(response.data.profile.profileImage);
       } catch (error) {
         console.error("Error fetching profile data:", error);
       }
     };
 
     fetchProfile();
-  }, [username, description]);
+  }, [token]);
 
   const handleFileChange = (event) => {
     const selectedFile = event.target.files[0];
@@ -44,30 +43,49 @@ const UploadModal = ({ show, onClose, onUpload, setProfileData }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    if (!file || !username || !description) return;
+    if (!username || !description) return;
 
-    const formData = new FormData();
-    formData.append("file", file);
-    formData.append("username", username);
-    formData.append("description", description);
+    let profileImageUrl = preview;
+
+    if (file) {
+      const formData = new FormData();
+      formData.append("file", file);
+
+      try {
+        const uploadResponse = await axios.post(
+          "http://localhost:8000/api/upload",
+          formData,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+
+        const { filePath } = uploadResponse.data;
+        profileImageUrl = filePath;
+      } catch (error) {
+        console.error("Error uploading file:", error);
+        return;
+      }
+    }
 
     try {
       const response = await axios.post(
-        "http://localhost:8000/api/upload",
-        formData,
+        "http://localhost:8000/api/users/profile",
+        { username, description, profileImage: profileImageUrl },
         {
           headers: {
-            "Content-Type": "multipart/form-data",
+            Authorization: `Bearer ${token}`,
           },
         }
       );
 
-      const { filePath } = response.data;
-      onUpload(`http://localhost:8000/${filePath}`);
-      setProfileData(preview);
+      setProfileData({ profileImage: profileImageUrl });
       onClose();
     } catch (error) {
-      console.error("Error uploading file:", error);
+      console.error("Error saving profile:", error);
     }
   };
 
@@ -75,16 +93,19 @@ const UploadModal = ({ show, onClose, onUpload, setProfileData }) => {
     return null;
   }
 
-  console.log(profile.profile);
-
   return (
     <div className={Classes.modal}>
       <div className={Classes.modalContent}>
-        <h2>Upload Profile Picture</h2>
+        <h3>Upload Personal Information</h3>
+        <hr />
         {profile ? (
           <div>
-            <h3>{profile?.profile?.name}</h3>
-            <p>{profile?.profile?.bio}</p>
+            <p>
+              NAME: <span>{profile.name}</span>
+            </p>
+            <p>
+              BIO: <span>{profile.bio}</span>
+            </p>
           </div>
         ) : (
           <form onSubmit={handleSubmit}>
@@ -108,7 +129,6 @@ const UploadModal = ({ show, onClose, onUpload, setProfileData }) => {
               className={Classes.UploadModalForm}
               type="file"
               onChange={handleFileChange}
-              required
             />
             <button type="submit" className={Classes["profile-btn-upload"]}>
               Upload
