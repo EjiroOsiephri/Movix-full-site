@@ -6,6 +6,7 @@ import Classes from "./MainBody.module.scss";
 import Recommended from "./Recommended";
 import Trending from "./Trending";
 import Modal from "./Modal";
+import "../components/customStyles.scss";
 import { toast, Toaster } from "react-hot-toast";
 import { AuthContext } from "../../context/AuthContext";
 
