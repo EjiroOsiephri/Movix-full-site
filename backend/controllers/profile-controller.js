@@ -2,7 +2,7 @@ const HttpError = require("../services/http-error");
 const Profile = require("../services/profile");
 
 const ProfileController = async (req, res) => {
-  const { username, description } = req.body;
+  const { username, description, profileImage } = req.body;
 
   if (!username && !description)
     throw new HttpError(
@@ -14,6 +14,7 @@ const ProfileController = async (req, res) => {
     name: username,
     bio: description,
     user: req.userData.userId,
+    profileImage,
   });
 
   try {

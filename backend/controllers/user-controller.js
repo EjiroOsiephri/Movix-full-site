@@ -57,7 +57,7 @@ const signupController = async (req, res, next) => {
     token = jwt.sign(
       { userId: createdUser.id, email: createdUser.email },
       "super_secret",
-      { expiresIn: "1hr" }
+      { expiresIn: "7d" }
     );
   } catch (error) {
     console.log(error);

@@ -1,7 +1,9 @@
 const express = require("express");
+const morgan = require("morgan");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const path = require("path");
+const cors = require("cors");
 
 require("dotenv").config();
 
@@ -16,21 +18,14 @@ const app = express();
 
 app.use(bodyParser.json());
 
-app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
-  );
-  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PATCH, DELETE");
+app.use(cors());
 
-  next();
-});
+app.use(morgan("dev"));
 
 app.use("/api/users", userRoutes, profileRoutes);
 
 app.use("/api/upload", uploadRoutes);
-app.use("/api/uploads", express.static(path.join(__dirname, "uploads")));
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 app.use("/api", movieRoutes);
 
 app.use((error, req, res, next) => {

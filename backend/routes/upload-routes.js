@@ -4,10 +4,7 @@ const upload = require("../middlewares/multer-config");
 const router = express.Router();
 
 router.post("/", upload.single("file"), (req, res) => {
-  if (!req.file) {
-    return res.status(400).send({ message: "Please upload a file." });
-  }
-  res.send({ filePath: `uploads/${req.file.filename}` });
+  res.status(201).json({ filePath: req.file.path });
 });
 
 module.exports = router;
