@@ -28,9 +28,9 @@ Backend:
 Node.js
 Express.js
 Database:
-MongoDB with mongoose
+MongoDB with Mongoose
 Deployment:
-Render and netlify
+Render and Netlify
 Authentication:
 JWT
 Installation
@@ -44,24 +44,25 @@ git clone https://github.com/EjiroOsiephri/Movix-full-site.git
 cd vite-project
 Install frontend dependencies:
 
+bash
+Copy code
 cd backend
 npm install
 Install backend dependencies:
 
-
+bash
+Copy code
 cd ../server
 npm install
 Set up the database:
 
 Ensure MongoDB is installed and running.
 Create a .env file in the server directory and add your database credentials.
-Run database migrations:
-
-
 Start the development server:
 
 Backend:
-
+bash
+Copy code
 npm run dev
 Frontend:
 bash
