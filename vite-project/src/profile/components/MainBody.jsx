@@ -131,11 +131,20 @@ const MainBody = ({ selectedCategory, searchTerm }) => {
   return (
     <main className={Classes["main-container"]}>
       <section className={Classes["mainbody-section"]}>
-        <Carousel showThumbs={false}>
+        <Carousel showThumbs={false} swipeable={false} emulateTouch={false}>
           {trending?.slice(0, 6).map((item, index) => (
-            <div className={Classes["slide"]} key={index}>
+            <div
+              style={{
+                borderRadius: "20px",
+              }}
+              className={Classes["slide"]}
+              key={index}
+            >
               (
               <img
+                style={{
+                  borderRadius: "20px",
+                }}
                 src={`https://image.tmdb.org/t/p/w500${item.backdrop_path}`}
                 alt={item.title || item.name}
               />

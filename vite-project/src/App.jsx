@@ -7,6 +7,7 @@ import SignUpStep3 from "./pages/SignUpStep3";
 import ProfilePage from "./profile/pages/ProfilePage";
 import AuthProvider from "./context/AuthContext";
 import ProtectedRoute from "./profile/components/ProtectedRoutes";
+import "./app.scss";
 
 function App() {
   return (
