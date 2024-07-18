@@ -1,4 +1,6 @@
-Movix 
+##Movix 
+
+
 Welcome to Movix, your ultimate destination for streaming trending movies and TV shows! Built with cutting-edge web technologies, Movix provides an immersive and user-friendly experience for all movie enthusiasts.
 
 Table of Contents Features Technologies Used Installation Usage API Documentation Contributing License Features User Authentication: Secure login and registration. User Profile: Personalized user profiles with the ability to update bio and username. Trending Movies and TV Shows: Stay updated with the latest trends. Recommendations: Get personalized movie and TV show recommendations. Search Functionality: Filter and find your favorite content easily. Responsive Design: Optimized for both desktop and mobile viewing. Interactive Carousel: Browse through featured movies and shows seamlessly. Checkout Feature: Simulate a checkout process for premium content. Technologies Used Frontend: React HTML5 CSS3 JavaScript Backend: Node.js Express.js Database: MongoDB with mongoose Deployment: Render and netlify Authentication: JWT Installation Follow these steps to set up the project locally:
